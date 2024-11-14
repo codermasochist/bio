@@ -20,14 +20,17 @@ body.navigation {
 }
 
 .navigation {
-    width: 100px; /* Уменьшаем ширину для вертикального меню */
+    width: 100px;
     height: auto;
-    background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493); /* Красный градиент */
-    background-size: 400%; /* Увеличиваем размер фона для анимации */
-    animation: gradientAnimation 10s ease infinite; /* Анимация градиента */
-    position: relative;
+    background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493);
+    background-size: 400%;
+    animation: gradientAnimation 10s ease infinite;
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
     display: flex;
-    flex-direction: column; /* Вертикальное расположение */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -35,7 +38,7 @@ body.navigation {
 
 .navigation ul {
     display: flex;
-    flex-direction: column; /* Вертикальное направление списка */
+    flex-direction: column;
 }
 
 .navigation ul li {
@@ -128,4 +131,4 @@ body.navigation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
+        }
