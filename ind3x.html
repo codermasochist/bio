@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тень SAQM-Bio</title>
+    <link rel="stylesheet" href="background_style.css"> <!-- Новый файл стилей для фона и заголовка -->
+    <link rel="stylesheet" href="info_style.css"> <!-- Файл стилей для контейнера информации -->
+    <link rel="stylesheet" href="menu_style.css"> <!-- Существующий файл стилей для меню -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="https://envs.sh/LwV.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+    <h1>INFO</h1>
+    <div class="navigation">
+        <ul>
+            <li class="list active">
+                <a href="#">
+                    <span class="icon"><ion-icon name="home"></ion-icon></span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><ion-icon name="paper-plane"></ion-icon></span>
+                    <span class="text">Telegram</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><ion-icon name="logo-github"></ion-icon></span>
+                    <span class="text">GitHub</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                    <span class="text">Bio</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><ion-icon name="settings"></ion-icon></span>
+                    <span class="text">Setting</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+    </div>
+    
+    <div class="info-container">
+        <div class="info-content" id="infoContent"></div>
+    </div>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+        const indicator = document.querySelector('.indicator');
+        const infoContent = document.getElementById('infoContent');
+        const infoContainer = document.querySelector('.info-container');
+
+        function setIndicator() {
+            const activeItem = document.querySelector('.list.active');
+            const itemRect = activeItem.getBoundingClientRect();
+            const navRect = document.querySelector('.navigation').getBoundingClientRect();
+            const centerY = itemRect.top - navRect.top + (itemRect.height / 2);
+            indicator.style.top = `${centerY}px`;
+        }
+
+        function activeLink() {
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');
+            setIndicator(); // Обновляем позицию индикатора
+
+            // Определяем, какой контент показать
+            const clickedItem = this.querySelector('.text').innerText.toLowerCase();
+            showInfo(clickedItem);
+        }
+
+        function showInfo(menuItem) {
+            let content = '';
+            switch (menuItem) {
+                case 'home':
+                    content = '<h2>Welcome to Home!</h2>';
+                    infoContainer.classList.remove('show'); // Закрыть контейнер информации
+                    break;
+                case 'telegram':
+                    content = '<h2>Telegram Link</h2><p><a href="http://t.me/codermasochist" target="_blank">Telegram</a></p>';
+                    break;
+                case 'github':
+                    content = '<h2>GitHub Link</h2><p><a href="https://github.com/codermasochist" target="_blank">GitHub</a></p>';
+                    break;
+                case 'bio':
+                    content = `<h2>Bio</h2>
+                               <p>Name: Àssa</p>
+                               <p>Birthdate: 30 June</p>
+                               <p>Age: 16 y.o</p>
+                               <h3>Hobbies:</h3>
+                               <ul>
+                                   <li>Watching anime</li>
+                                   <li>Valeybol</li>
+                                   <li>Programming & coding (soon...)</li>
+                               </ul>
+                               <h3>Favorite anime:</h3>
+                               <ul>
+                                   <li>Darling in the Franxx</li>
+                                   <li>Evangelion</li>
+                                   <li>High School DxD</li>
+                                   <li>Jujutsu Kaisen</li>
+                                   <li>Chainsaw Man</li>
+                               </ul>`;
+                    break;
+                case 'setting':
+                    content = `<h2>Settings</h2>
+                               <p>• My channel with anime edits, subscribe. <p>● <a href="https://t.me/makimalove" target="_blank" rel="noopener noreferrer">https://t.me/makimalove</a></p>`;
+                    break;
+            }
+            if (menuItem !== 'home') {
+                infoContent.innerHTML = content;
+                infoContainer.classList.add('show'); // Показать контейнер с информацией
+            }
+        }
+
+        function changeLanguage(lang) {
+            alert(`Language changed to: ${lang}`);
+            // Здесь можно добавить логику для изменения языка интерфейса
+        }
+
+        list.forEach((item) => item.addEventListener('click', activeLink));
+        window.addEventListener('load', setIndicator); // Устанавливаем начальную позицию индикатора
+    </script>
+</body>
+</html>
