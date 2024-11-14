@@ -9,10 +9,9 @@ body, html {
     position: fixed;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Видео заполняет экран без обрезки */
     z-index: -1;
     transform: translate(-50%, -50%);
 }
@@ -20,15 +19,15 @@ body, html {
 h1 {
     position: relative;
     z-index: 1;
-    color: #FF0000; /* Начальный красный цвет текста */
-    text-align: center; /* Центрирование текста */
-    margin-top: 5%; /* Отступ сверху */
-    margin-left: 40%; /* Отступ справа */
-    border-radius: 30px; /* Овал для границы */
-    border: 10px solid #FF0000; /* Начальный красный цвет рамки */
-    animation: borderAnimation 5s infinite, textColorAnimation 5s infinite; /* Анимация границы и цвета текста */
-    display: inline-block; /* Позволяет рамке подстраиваться под размер текста */
-    padding: 10px 20px; /* Отступы для создания пространства вокруг текста */
+    color: #FF0000;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 40%;
+    border-radius: 30px;
+    border: 10px solid #FF0000;
+    animation: borderAnimation 5s infinite, textColorAnimation 5s infinite;
+    display: inline-block;
+    padding: 10px 20px;
 }
 
 @keyframes borderAnimation {
