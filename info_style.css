@@ -7,31 +7,46 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.info-container {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Начальное положение вне экрана */
-    width: 300px;
-    height: 100%;
-    background: linear-gradient(45deg, #FF0000, #FF6347, #FF4500, #DC143C, #B22222, #8B0000, #A52A2A, #D2691E, #FF7F50, #FF6347, #FF1493);
-    background-size: 400%; /* Увеличиваем размер фона для анимации */
-    animation: gradientAnimation 10s ease infinite; /* Анимация градиента */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: right 0.5s ease; /* Плавный переход */
-    z-index: 10;
+:root {
+    --clr: #222327;
 }
 
-.info-container.show {
-    right: 0; /* Показать контейнер */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
 }
 
-.info-content {
+/* Панель info_style */
+.info_style {
+    position: relative;
+    z-index: 5; /* Панель будет над меню */
+    background-color: #f4f4f4; /* Цвет фона панели */
     padding: 20px;
-    color: #222; /* Цвет текста */
+    margin-top: 120px; /* Создает отступ сверху, чтобы не перекрывал меню */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto; /* Центрирование панели */
+    position: relative;
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.info_style h1 {
+    font-size: 2em;
+    color: var(--clr);
+    margin-bottom: 10px;
 }
+
+.info_style p {
+    font-size: 1.1em;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.info_style .info_item {
+    margin-bottom: 15px;
+}
+
+/* Добавьте другие стили для других элементов внутри info_style по необходимости */
