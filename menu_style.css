@@ -1,106 +1,138 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
-
-* {
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    overflow: hidden;
 }
 
-:root {
-    --clr: #222327;
-    --highlight: #FF4500;
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
 }
 
-body.navigation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: var(--clr);
+h1 {
+    position: relative;
+    z-index: 1;
+    color: #8B0000; 
+    text-align: center;
+    margin-top: 120%;
+    margin-right: 60%;
+    border-radius: 30px;
+    border: 10px solid #8B0000;
+    animation: borderAnimation 5s infinite, textColorAnimation 5s infinite;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+@keyframes borderAnimation {
+    0% { border: 4px solid #8B0000; }
+    100% { border: 4px solid #B22222; }
+}
+
+@keyframes textColorAnimation {
+    0% { color: #8B0000; }
+    100% { color: #B22222; }
 }
 
 .navigation {
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493);
-    background-size: 400%;
-    animation: gradientAnimation 10s ease infinite;
     position: fixed;
     bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(45deg, #8B0000, #B22222, #FF0000, #DC143C, #FA8072);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px 10px 0 0;
     z-index: 10;
 }
 
 .navigation ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
 .navigation ul li {
-    position: relative;
     list-style: none;
+    margin: 0 15px;
 }
 
 .navigation ul li a {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: var(--clr);
-    font-size: 0.9em;
-    transition: transform 0.3s, color 0.3s;
+    text-align: center;
+    transition: transform 0.5s ease;
+    color: white;
 }
 
 .navigation ul li a .icon {
-    font-size: 1.8em;
-    color: #FFF;
-    transition: transform 0.3s, color 0.3s;
-}
-
-.navigation ul li.active a .icon {
-    transform: scale(1.3);
-    color: var(--highlight);
-}
-
-.navigation ul li.active a .text {
-    color: var(--highlight);
+    font-size: 24px;
+    transition: 0.3s ease-in-out;
 }
 
 .navigation ul li a .text {
-    margin-top: 5px;
+    font-size: 14px;
     opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(20px);
-    transition: opacity 0.3s, transform 0.3s;
 }
 
-.navigation ul li.active a .text {
+.navigation ul li:hover a .icon {
+    transform: translateY(-10px);
+}
+
+.navigation ul li:hover a .text {
     opacity: 1;
     transform: translateY(0);
 }
 
-.indicator {
+.ind {
     position: absolute;
-    bottom: 60px;
+    bottom: 70px;
     left: 50%;
+    transform: translateX(-50%);
     width: 50px;
     height: 50px;
-    background: var(--highlight);
+    background: linear-gradient(45deg, #8B0000, #B22222, #FF0000, #DC143C, #FA8072);
     border-radius: 50%;
-    transform: translateX(-50%);
-    transition: all 0.5s ease;
+    border: 6px solid #222;
+    transition: 0.5s;
+    z-index: 20;
+}
+
+.info-container {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(45deg, #8B0000, #B22222, #FF0000, #DC143C, #FA8072);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.5s ease;
+    z-index: 10;
+}
+
+.info-container.show {
+    right: 0;
+}
+
+.info-content {
+    padding: 20px;
+    color: #fff;
 }
 
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
+    }
