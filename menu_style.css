@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 :root {
     --clr: #222327;
 }
@@ -8,19 +17,26 @@ body.navigation {
     align-items: center;
     min-height: 100vh;
     background: var(--clr);
-    position: relative;
 }
 
 .navigation {
     width: 100px;
     height: auto;
-    background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493);
+    background: linear-gradient(45deg, 
+        #8A2BE2,  /* Синий фиолетовый */
+        #9400D3,  /* Темно-фиолетовый */
+        #9932CC,  /* Темно-сиреневый */
+        #BA55D3,  /* Орхидея */
+        #DA70D6,  /* Фиолетовая орхидея */
+        #D8BFD8,  /* Лаванда */
+        #EE82EE,  /* Фиолетовый */
+        #9370DB,  /* Средний фиолетовый */
+        #8B008B,  /* Темно-пурпурный */
+        #7B68EE   /* Синий с фиолетовым оттенком */
+    );
     background-size: 400%;
     animation: gradientAnimation 10s ease infinite;
-    position: fixed;
-    bottom: 0;  /* Панель теперь будет снизу */
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,8 +47,6 @@ body.navigation {
 .navigation ul {
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin: 0;
 }
 
 .navigation ul li {
@@ -65,7 +79,7 @@ body.navigation {
 }
 
 .navigation ul li.active a .icon {
-    transform: translateY(32px); /* Иконки теперь двигаются вниз */
+    transform: translateY(-32px);
 }
 
 .navigation ul li a .text {
@@ -81,7 +95,7 @@ body.navigation {
 
 .navigation ul li.active a .text {
     opacity: 1;
-    transform: translateY(-10px); /* Текст появляется сверху */
+    transform: translateY(10px);
 }
 
 .indicator {
@@ -90,7 +104,7 @@ body.navigation {
     left: 15px;
     width: 70px;
     height: 70px;
-    background: #FF4500;
+    background: #9400D3; /* Темно-фиолетовый */
     border-radius: 50%;
     border: 6px solid var(--clr);
     transition: 0.5s;
@@ -125,4 +139,4 @@ body.navigation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-        }
+    }
