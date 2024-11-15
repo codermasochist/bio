@@ -7,45 +7,43 @@
     font-family: 'Poppins', sans-serif;
 }
 
-:root {
-    --clr: #222327;
-}
-
-body {
-    background: var(--clr);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.content {
-    flex-grow: 1; /* Панель с контентом будет занимать оставшееся место */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.panel {
-    width: 300px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.8);
+.info-container {
     position: fixed;
-    bottom: 80px; /* Отступим от нижней панели меню */
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    top: 0;
+    right: -300px; /* Начальное положение вне экрана */
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        #FF0000,  /* Красный */
+        #FF6347,  /* Коралловый */
+        #FF4500,  /* Оранжево-красный */
+        #DC143C,  /* Малиновый */
+        #B22222,  /* Кирпичный красный */
+        #8B0000,  /* Тёмно-красный */
+        #A52A2A,  /* Коричневый */
+        #D2691E,  /* Шоколадный */
+        #FF7F50,  /* Коралл */
+        #FF6347,  /* Коралловый */
+        #FF1493   /* Ярко-розовый */
+    );
+    background-size: 400%; /* Увеличиваем размер фона для анимации */
+    animation: gradientAnimation 10s ease infinite; /* Анимация градиента */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Тень справа */
+    transition: right 0.5s ease; /* Плавный переход */
+    z-index: 10;
 }
 
-.panel.active {
-    display: flex;
+.info-container.show {
+    right: 0; /* Показать контейнер */
 }
 
-.panel .content-text {
-    text-align: center;
-    color: #333;
-    font-size: 1.2em;
+.info-content {
+    padding: 20px;
+    color: #222; /* Цвет текста */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
