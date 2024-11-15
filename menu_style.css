@@ -9,69 +9,126 @@
 
 :root {
     --clr: #222327;
-    --menu-bg: rgba(255, 0, 0, 0.3); /* Нежно прозрачный красный */
 }
 
-body {
-    background: var(--clr);
-    min-height: 100vh;
+body.navigation {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Позиционируем меню внизу */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--clr);
 }
 
 .navigation {
-    width: 100%;
-    height: 70px; /* Устанавливаем высоту панели меню */
-    background: var(--menu-bg); /* Прозрачный красный фон */
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    width: 100px;
+    height: auto;
+    background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493);
+    background-size: 400%;
+    animation: gradientAnimation 10s ease infinite;
     position: fixed;
-    bottom: 0; /* Панель меню фиксируется внизу */
-    left: 0;
-    border-radius: 10px 10px 0 0;
-    z-index: 10;
-}
-
-.navigation ul {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.navigation ul li {
-    list-style: none;
-}
-
-.navigation ul li a {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+}
+
+.navigation ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    height: 70px;
+    z-index: 1;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
     text-align: center;
     font-weight: 500;
-    color: #fff;
-    text-decoration: none;
 }
 
 .navigation ul li a .icon {
+    position: relative;
+    display: block;
+    line-height: 75px;
     font-size: 1.5em;
-    transition: 0.3s;
+    text-align: center;
+    transition: 0.5s;
+    color: var(--clr);
+}
+
+.navigation ul li.active a .icon {
+    transform: translateY(-32px);
 }
 
 .navigation ul li a .text {
+    position: absolute;
+    color: var(--clr);
+    font-weight: 400;
     font-size: 0.62em;
-    color: #fff;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
     opacity: 0;
-    transition: 0.3s;
+    transform: translateY(20px);
 }
 
-.navigation ul li:hover a .icon {
-    transform: translateY(-10px);
-}
-
-.navigation ul li:hover a .text {
+.navigation ul li.active a .text {
     opacity: 1;
     transform: translateY(10px);
+}
+
+.indicator {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    width: 70px;
+    height: 70px;
+    background: #FF0000; /* Красный цвет */
+    border-radius: 50%;
+    border: 6px solid var(--clr);
+    transition: 0.5s;
+    transform: translateY(-50%);
+}
+
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 var(--clr);
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 var(--clr);
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
