@@ -9,6 +9,7 @@
 
 :root {
     --clr: #222327;
+    --red-transparent: rgba(255, 0, 0, 0.7); /* Прозрачный красный */
 }
 
 body.navigation {
@@ -22,7 +23,7 @@ body.navigation {
 .navigation {
     width: 100px;
     height: auto;
-    background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493);
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.7), rgba(255, 99, 71, 0.7), rgba(255, 69, 0, 0.7), rgba(178, 34, 34, 0.7), rgba(139, 0, 0, 0.7), rgba(210, 105, 30, 0.7), rgba(205, 92, 92, 0.7), rgba(240, 128, 128, 0.7), rgba(255, 20, 147, 0.7));
     background-size: 400%;
     animation: gradientAnimation 10s ease infinite;
     position: relative;
@@ -93,7 +94,7 @@ body.navigation {
     left: 15px;
     width: 70px;
     height: 70px;
-    background: #FF4500;
+    background: rgba(255, 69, 0, 0.7); /* Прозрачный красный */
     border-radius: 50%;
     border: 6px solid var(--clr);
     transition: 0.5s;
