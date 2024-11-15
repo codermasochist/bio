@@ -1,138 +1,128 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
+:root {
+    --clr: #222327;
 }
 
-.video-background {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    transform: translate(-50%, -50%);
-}
-
-h1 {
+body.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--clr);
     position: relative;
-    z-index: 1;
-    color: #8B0000; 
-    text-align: center;
-    margin-top: 120%;
-    margin-right: 60%;
-    border-radius: 30px;
-    border: 10px solid #8B0000;
-    animation: borderAnimation 5s infinite, textColorAnimation 5s infinite;
-    display: inline-block;
-    padding: 10px 20px;
-}
-
-@keyframes borderAnimation {
-    0% { border: 4px solid #8B0000; }
-    100% { border: 4px solid #B22222; }
-}
-
-@keyframes textColorAnimation {
-    0% { color: #8B0000; }
-    100% { color: #B22222; }
 }
 
 .navigation {
+    width: 100px;
+    height: auto;
+    background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493);
+    background-size: 400%;
+    animation: gradientAnimation 10s ease infinite;
     position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(45deg, #8B0000, #B22222, #FF0000, #DC143C, #FA8072);
+    bottom: 0;  /* Панель теперь будет снизу */
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    border-radius: 10px 10px 0 0;
-    z-index: 10;
+    border-radius: 10px;
 }
 
 .navigation ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
 }
 
 .navigation ul li {
+    position: relative;
     list-style: none;
-    margin: 0 15px;
+    width: 100%;
+    height: 70px;
+    z-index: 1;
 }
 
 .navigation ul li a {
+    position: relative;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 100%;
     text-align: center;
-    transition: transform 0.5s ease;
-    color: white;
+    font-weight: 500;
 }
 
 .navigation ul li a .icon {
-    font-size: 24px;
-    transition: 0.3s ease-in-out;
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: 0.5s;
+    color: var(--clr);
+}
+
+.navigation ul li.active a .icon {
+    transform: translateY(32px); /* Иконки теперь двигаются вниз */
 }
 
 .navigation ul li a .text {
-    font-size: 14px;
+    position: absolute;
+    color: var(--clr);
+    font-weight: 400;
+    font-size: 0.62em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(20px);
 }
 
-.navigation ul li:hover a .icon {
-    transform: translateY(-10px);
-}
-
-.navigation ul li:hover a .text {
+.navigation ul li.active a .text {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-10px); /* Текст появляется сверху */
 }
 
-.ind {
+.indicator {
     position: absolute;
-    bottom: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #8B0000, #B22222, #FF0000, #DC143C, #FA8072);
+    top: 50%;
+    left: 15px;
+    width: 70px;
+    height: 70px;
+    background: #FF4500;
     border-radius: 50%;
-    border: 6px solid #222;
+    border: 6px solid var(--clr);
     transition: 0.5s;
-    z-index: 20;
+    transform: translateY(-50%);
 }
 
-.info-container {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100%;
-    background: linear-gradient(45deg, #8B0000, #B22222, #FF0000, #DC143C, #FA8072);
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: right 0.5s ease;
-    z-index: 10;
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 var(--clr);
 }
 
-.info-container.show {
-    right: 0;
-}
-
-.info-content {
-    padding: 20px;
-    color: #fff;
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 var(--clr);
 }
 
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-    }
+        }
