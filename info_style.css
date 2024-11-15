@@ -12,41 +12,40 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    font-family: 'Poppins', sans-serif;
+    background: var(--clr);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Панель info_style */
-.info_style {
-    position: relative;
-    z-index: 5; /* Панель будет над меню */
-    background-color: #f4f4f4; /* Цвет фона панели */
-    padding: 20px;
-    margin-top: 120px; /* Создает отступ сверху, чтобы не перекрывал меню */
+.content {
+    flex-grow: 1; /* Панель с контентом будет занимать оставшееся место */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel {
+    width: 300px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    bottom: 80px; /* Отступим от нижней панели меню */
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    width: 100%;
-    margin: 20px auto; /* Центрирование панели */
-    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.info_style h1 {
-    font-size: 2em;
-    color: var(--clr);
-    margin-bottom: 10px;
+.panel.active {
+    display: flex;
 }
 
-.info_style p {
-    font-size: 1.1em;
-    color: #555555;
-    line-height: 1.6;
+.panel .content-text {
+    text-align: center;
+    color: #333;
+    font-size: 1.2em;
 }
-
-.info_style .info_item {
-    margin-bottom: 15px;
-}
-
-/* Добавьте другие стили для других элементов внутри info_style по необходимости */
