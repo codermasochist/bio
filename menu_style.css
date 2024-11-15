@@ -9,6 +9,7 @@
 
 :root {
     --clr: #222327;
+    --highlight: #FF4500;
 }
 
 body.navigation {
@@ -20,108 +21,82 @@ body.navigation {
 }
 
 .navigation {
-    width: 100px;
-    height: auto;
+    width: 100%;
+    height: 80px;
     background: linear-gradient(45deg, #FF6347, #FF4500, #FF0000, #B22222, #8B0000, #D2691E, #CD5C5C, #F08080, #FF1493);
     background-size: 400%;
     animation: gradientAnimation 10s ease infinite;
-    position: relative;
+    position: fixed;
+    bottom: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 10;
 }
 
 .navigation ul {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .navigation ul li {
     position: relative;
     list-style: none;
-    width: 100%;
-    height: 70px;
-    z-index: 1;
 }
 
 .navigation ul li a {
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    width: 100%;
-    text-align: center;
-    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--clr);
+    font-size: 0.9em;
+    transition: transform 0.3s, color 0.3s;
 }
 
 .navigation ul li a .icon {
-    position: relative;
-    display: block;
-    line-height: 75px;
-    font-size: 1.5em;
-    text-align: center;
-    transition: 0.5s;
-    color: var(--clr);
+    font-size: 1.8em;
+    color: #FFF;
+    transition: transform 0.3s, color 0.3s;
 }
 
 .navigation ul li.active a .icon {
-    transform: translateY(-32px);
+    transform: scale(1.3);
+    color: var(--highlight);
+}
+
+.navigation ul li.active a .text {
+    color: var(--highlight);
 }
 
 .navigation ul li a .text {
-    position: absolute;
-    color: var(--clr);
-    font-weight: 400;
-    font-size: 0.62em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
+    margin-top: 5px;
     opacity: 0;
     transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
 }
 
 .navigation ul li.active a .text {
     opacity: 1;
-    transform: translateY(10px);
+    transform: translateY(0);
 }
 
 .indicator {
     position: absolute;
-    top: 50%;
-    left: 15px;
-    width: 70px;
-    height: 70px;
-    background: #FF4500;
+    bottom: 60px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background: var(--highlight);
     border-radius: 50%;
-    border: 6px solid var(--clr);
-    transition: 0.5s;
-    transform: translateY(-50%);
-}
-
-.indicator::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-right-radius: 20px;
-    box-shadow: 1px -10px 0 0 var(--clr);
-}
-
-.indicator::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-left-radius: 20px;
-    box-shadow: -1px -10px 0 0 var(--clr);
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
 }
 
 @keyframes gradientAnimation {
