@@ -49,6 +49,7 @@ body.navigation {
 .navigation ul {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .navigation ul li {
@@ -57,6 +58,9 @@ body.navigation {
     width: 100%;
     height: 70px;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navigation ul li a {
@@ -71,17 +75,13 @@ body.navigation {
 }
 
 .navigation ul li a .icon {
-    position: relative;
+    position: absolute;
     display: block;
-    line-height: 60px; /* Центрируем иконку в индикаторе */
-    font-size: 1.8em; /* Увеличиваем размер иконки */
+    line-height: 75px;
+    font-size: 1.5em;
     text-align: center;
-    transition: 0.5s;
     color: var(--clr);
-}
-
-.navigation ul li.active a .icon {
-    transform: translateY(0px); /* Убираем смещение вверх */
+    z-index: 2; /* Обеспечиваем, что иконка будет поверх индикатора */
 }
 
 .navigation ul li a .text {
@@ -100,21 +100,52 @@ body.navigation {
     transform: translateY(10px);
 }
 
+/* Индикатор, который будет двигаться по иконкам */
 .indicator {
     position: absolute;
-    top: 50%; /* Центрируем индикатор по вертикали */
-    left: 15px;
+    top: 50%;
+    left: 50%;
     width: 60px; /* Размер индикатора */
     height: 60px; /* Размер индикатора */
-    background: rgba(255, 255, 255, 0.3); /* Прозрачный белый */
+    background: rgba(255, 255, 255, 0.3); /* Полупрозрачный белый */
     border-radius: 50%;
-    border: 4px solid var(--clr); /* Толщина и цвет рамки */
+    border: 6px solid var(--clr);
     transition: 0.5s;
-    transform: translateY(-30px); /* Корректируем положение по тексту */
+    transform: translate(-50%, -50%); /* Центрируем индикатор по иконке */
 }
 
-.indicator::before, .indicator::after {
-    display: none; /* Убираем лишние декоративные элементы */
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 var(--clr);
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 var(--clr);
+}
+
+/* Ключевая анимация для перемещения индикатора */
+@keyframes indicatorMove {
+    0% {
+        transform: translate(-50%, -50%) translateX(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) translateX(100%); /* Перемещаем индикатор по иконкам */
+    }
 }
 
 @keyframes gradientAnimation {
