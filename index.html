@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Àssa-bio</title>
-    <link rel="stylesheet" href="background_style.css"> <!-- Новый файл стилей для фона и заголовка -->
-    <link rel="stylesheet" href="info_style.css"> <!-- Файл стилей для контейнера информации -->
-    <link rel="stylesheet" href="menu_style.css"> <!-- Существующий файл стилей для меню -->
+    <title>Assa-bio</title>
+    <link rel="stylesheet" href="background_style.css">
+    <link rel="stylesheet" href="info_style.css">
+    <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <video autoplay muted loop class="video-background">
-        <source src="https://envs.sh/5ic.mp4" type="video/mp4">
+        <source src="https://envs.sh/GWS.mp4"video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
-    <h1>As Info?</h1>
+    <h1>info?</h1>
     <div class="navigation">
         <ul>
             <li class="list active">
@@ -26,8 +26,8 @@
             </li>
             <li class="list">
                 <a href="#">
-                    <span class="icon"><ion-icon name="paper-plane"></ion-icon></span>
-                    <span class="text">Telegram</span>
+                    <span class="icon"><ion-icon name="help-circle"></ion-icon></span>
+                    <span class="text">Pm</span>
                 </a>
             </li>
             <li class="list">
@@ -38,14 +38,20 @@
             </li>
             <li class="list">
                 <a href="#">
+                    <span class="icon"><ion-icon name="game-controller"></ion-icon></span>
+                    <span class="text">Games</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
                     <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
                     <span class="text">Bio</span>
                 </a>
             </li>
             <li class="list">
                 <a href="#">
-                    <span class="icon"><ion-icon name="settings"></ion-icon></span>
-                    <span class="text">Setting</span>
+                    <span class="icon"><ion-icon name="share-social"></ion-icon></span>
+                    <span class="text">Links</span>
                 </a>
             </li>
             <div class="indicator"></div>
@@ -73,9 +79,8 @@
         function activeLink() {
             list.forEach((item) => item.classList.remove('active'));
             this.classList.add('active');
-            setIndicator(); // Обновляем позицию индикатора
+            setIndicator();
 
-            // Определяем, какой контент показать
             const clickedItem = this.querySelector('.text').innerText.toLowerCase();
             showInfo(clickedItem);
         }
@@ -85,13 +90,23 @@
             switch (menuItem) {
                 case 'home':
                     content = '<h2>Welcome to Home!</h2>';
-                    infoContainer.classList.remove('show'); // Закрыть контейнер информации
+                    infoContainer.classList.remove('show');
                     break;
-                case 'telegram':
-                    content = '<h2>Telegram:</h2><p><a href="http://t.me/codermasochist" target="_blank">Telegram</a></p> (click)';
+                case 'личные вопросы':
+                    content = 'PM
+Write to me with questions <a href="http://codermasochist.t.me/">Telegram.</a> (clickable)';
                     break;
                 case 'github':
-                    content = '<h2>GitHub:</h2><p><a href="https://github.com/codermasochist" target="_blank">GitHub</a></p> (click)';
+                    content = 'GitHub:
+My <a href="https://github.com/codermasochist">GitHub</a> (clickable)';
+                    break;
+                case 'games':
+                    content = `<h2>Games:</h2>
+                               <p>I play:</p>
+                               <ul>
+                                   <li>Genshin Impact</li>
+                                   <li>Mobile Legends</li>
+                               </ul> the list will be updated. \n what else shall we play?)`;
                     break;
                 case 'bio':
                     content = `<h2>Bio</h2>
@@ -100,9 +115,9 @@
                                <p>Age: 16 y.o</p>
                                <h3>Hobbies:</h3>
                                <ul>
-                                   <li>Watching anime</li>
-                                   <li>Valeybol</li>
-                                   <li>Programming & coding (soon...)</li>
+                                   <li>watching anime</li>
+                                   <li>valleyball</li>
+                                   <li>programming & coding (soon...)</li>
                                </ul>
                                <h3>Favorite anime:</h3>
                                <ul>
@@ -113,24 +128,26 @@
                                    <li>Chainsaw Man</li>
                                </ul>`;
                     break;
-                case 'setting':
-                    content = `<h2>settings</h2>
-                               <p>• My channel with anime edits, subscribe. <p>● <a href="https://t.me/makimalove" target="_blank" rel="noopener noreferrer">https://t.me/makimalove</a></p>`;
+                case 'links':
+                    content = `<h2>Links to My Social Networks:</h2>
+                               <ul>
+                                   My Telegram: <a href="http://codermasochist.t.me/">click.</a>
+My Telegram second account: <a href="http://arhess.t.me/">click.</a>
+My TikTok: <a href="https://www.tiktok.com/@codermasohist?_t=8r5CIcyrqMo&_r=1">click.</a>
+My Instagram: <a href="https://www.instagram.com/codermasochist">click.</a>
+My discord: <a href="https://discord.gg/6NbuC4Rx">click.</a>
+My Telegram channel: <a href="http://t.me/makimalove">click.</a>
+                               </ul> The list will be updated.`;
                     break;
             }
             if (menuItem !== 'home') {
                 infoContent.innerHTML = content;
-                infoContainer.classList.add('show'); // Показать контейнер с информацией
+                infoContainer.classList.add('show');
             }
         }
 
-        function changeLanguage(lang) {
-            alert(`Language changed to: ${lang}`);
-            // Здесь можно добавить логику для изменения языка интерфейса
-        }
-
         list.forEach((item) => item.addEventListener('click', activeLink));
-        window.addEventListener('load', setIndicator); // Устанавливаем начальную позицию индикатора
+        window.addEventListener('load', setIndicator);
     </script>
 </body>
-</html>
+    </html>
