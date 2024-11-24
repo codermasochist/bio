@@ -21,37 +21,21 @@
             <li class="list active">
                 <a href="#">
                     <span class="icon"><ion-icon name="home"></ion-icon></span>
-                    <span class="text">home</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><ion-icon name="help-circle"></ion-icon></span>
-                    <span class="text">pm</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="#">
-                    <span class="icon"><ion-icon name="logo-github"></ion-icon></span>
-                    <span class="text">github</span>
                 </a>
             </li>
             <li class="list">
                 <a href="#">
                     <span class="icon"><ion-icon name="game-controller"></ion-icon></span>
-                    <span class="text">games</span>
                 </a>
             </li>
             <li class="list">
                 <a href="#">
                     <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
-                    <span class="text">bio</span>
                 </a>
             </li>
             <li class="list">
                 <a href="#">
                     <span class="icon"><ion-icon name="share-social"></ion-icon></span>
-                    <span class="text">links</span>
                 </a>
             </li>
             <div class="indicator"></div>
@@ -81,34 +65,27 @@
             this.classList.add('active');
             setIndicator();
 
-            const clickedItem = this.querySelector('.text').innerText.toLowerCase();
+            const clickedItem = this.querySelector('.icon ion-icon').getAttribute('name');
             showInfo(clickedItem);
         }
 
-        function showInfo(menuItem) {
+        function showInfo(iconName) {
             let content = '';
-            switch (menuItem) {
+            switch (iconName) {
                 case 'home':
                     content = '<h2>Welcome to Home!</h2>';
                     infoContainer.classList.remove('show');
                     break;
-                case 'pm':
-                    content = `PM: Write to me with questions <a href="http://codermasochist.t.me/">Telegram</a> (clickable)`;
-                    break;
-                case 'github':
-                    content = 'GitHub: My <a href="https://github.com/codermasochist">GitHub</a> (clickable)';
-                    break;
-                case 'games':
+                case 'game-controller':
                     content = `<h2>Games:</h2>
                                <p>I play:</p>
                                <ul>
                                    <li>Genshin Impact</li>
                                    <li>Mobile Legends</li>
-                                   
                                </ul> the list will be updated.
                                what else shall we play?`;
                     break;
-                case 'bio':
+                case 'person-circle':
                     content = `<h2>Bio</h2>
                                <p>Name: Àssa</p>
                                <p>Birthdate: 30 June.</p>
@@ -129,7 +106,7 @@
                                </ul>
                                <p>(The list will be updated...)</p>`;
                     break;
-                case 'links':
+                case 'share-social':
                     content = `<h2>Links to My Social Networks:</h2>
                                <ul>
                                    <li>My Telegram: <a href="http://codermasochist.t.me/">click.</a></li>
@@ -141,7 +118,7 @@
                                </ul> The list will be updated.`;
                     break;
             }
-            if (menuItem !== 'home') {
+            if (iconName !== 'home') {
                 infoContent.innerHTML = content;
                 infoContainer.classList.add('show');
             }
