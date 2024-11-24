@@ -8,8 +8,7 @@
 }
 
 :root {
-    --clr: #f5f5f5; /* Светло-серый, почти белый */
-    --red-transparent: rgba(255, 255, 255, 0.3); /* Прозрачный белый */
+    --clr: #f5f5f5; /* Светло-серый */
 }
 
 body.navigation {
@@ -24,20 +23,15 @@ body.navigation {
     width: 100px;
     height: auto;
     background: linear-gradient(45deg, 
-        rgba(255, 0, 0, 0.3),  /* Полупрозрачный красный */
-        rgba(0, 0, 0, 0.4),    /* Прозрачный черный */
-        rgba(255, 255, 255, 0.5),  /* Прозрачный белый */
-        rgba(255, 0, 0, 0.6),  /* Полупрозрачный красный */
-        rgba(0, 0, 0, 0.7),    /* Прозрачный черный */
-        rgba(255, 255, 255, 0.8),  /* Прозрачный белый */
-        rgba(255, 0, 0, 0.9),  /* Полупрозрачный красный */
-        rgba(0, 0, 0, 0.6),    /* Прозрачный черный */
-        rgba(255, 255, 255, 0.5),  /* Прозрачный белый */
-        rgba(255, 0, 0, 0.4),  /* Полупрозрачный красный */
-        rgba(0, 0, 0, 0.3)     /* Прозрачный черный */
+        rgba(255, 182, 193, 0.5),  /* Нежно-розовый */
+        rgba(238, 130, 238, 0.5),  /* Нежно-фиолетовый */
+        rgba(255, 105, 180, 0.6),  /* Нежно-красный */
+        rgba(238, 130, 238, 0.6),  /* Нежно-фиолетовый */
+        rgba(255, 182, 193, 0.7),  /* Нежно-розовый */
+        rgba(238, 130, 238, 0.8)   /* Нежно-фиолетовый */
     );
     background-size: 400%;
-    animation: gradientAnimation 10s ease infinite;
+    animation: gradientAnimation 8s ease infinite;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -81,7 +75,7 @@ body.navigation {
     font-size: 1.5em;
     text-align: center;
     color: var(--clr);
-    z-index: 2; /* Обеспечиваем, что иконка будет поверх индикатора */
+    z-index: 2;
 }
 
 .navigation ul li a .text {
@@ -100,18 +94,17 @@ body.navigation {
     transform: translateY(10px);
 }
 
-/* Индикатор, который будет двигаться по иконкам */
 .indicator {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px; /* Размер индикатора */
-    height: 60px; /* Размер индикатора */
-    background: rgba(255, 255, 255, 0.3); /* Полупрозрачный белый */
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     border: 6px solid var(--clr);
     transition: 0.5s;
-    transform: translate(-50%, -50%); /* Центрируем индикатор по иконке */
+    transform: translate(-50%, -50%);
 }
 
 .indicator::before {
@@ -138,18 +131,8 @@ body.navigation {
     box-shadow: -1px -10px 0 0 var(--clr);
 }
 
-/* Ключевая анимация для перемещения индикатора */
-@keyframes indicatorMove {
-    0% {
-        transform: translate(-50%, -50%) translateX(0);
-    }
-    100% {
-        transform: translate(-50%, -50%) translateX(100%); /* Перемещаем индикатор по иконкам */
-    }
-}
-
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-    }
+}
