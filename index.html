@@ -137,8 +137,10 @@
 
         list.forEach((item) => item.addEventListener('click', activeLink));
         window.addEventListener('load', setIndicator);
+
         muteToggle.addEventListener('click', (event) => {
-            event.preventDefault();  // Добавляем это, чтобы не срабатывала другая логика
+            event.preventDefault();
+            event.stopPropagation();
             toggleMute();
         });
     </script>
