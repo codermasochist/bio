@@ -14,12 +14,12 @@
     width: 300px;
     height: 100%;
     background: linear-gradient(45deg, 
-        rgba(255, 182, 193, 0.5),  /* Нежно-розовый */
-        rgba(238, 130, 238, 0.5),  /* Нежно-фиолетовый */
-        rgba(255, 105, 180, 0.6),  /* Нежно-красный */
-        rgba(238, 130, 238, 0.6),  /* Нежно-фиолетовый */
-        rgba(255, 182, 193, 0.7),  /* Нежно-розовый */
-        rgba(238, 130, 238, 0.8)   /* Нежно-фиолетовый */
+        rgba(255, 99, 71, 0.5),  /* Нежно-красный */
+        rgba(255, 0, 0, 0.5),    /* Ярко-красный */
+        rgba(255, 99, 71, 0.6),  /* Нежно-красный */
+        rgba(255, 0, 0, 0.6),    /* Ярко-красный */
+        rgba(255, 99, 71, 0.7),  /* Нежно-красный */
+        rgba(255, 0, 0, 0.8)     /* Ярко-красный */
     );
     background-size: 400%;
     animation: gradientAnimation 8s ease infinite;
@@ -34,11 +34,11 @@
 
 .info-content {
     padding: 20px;
-    color: rgba(34, 34, 34, 0.7);
+    color: rgba(34, 34, 34, 0.7); /* Темно-серый цвет для текста */
 }
 
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-        }
+}
