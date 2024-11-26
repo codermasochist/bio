@@ -11,14 +11,11 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <video autoplay muted loop class="video-background" id="bgVideo">
-        <source src="https://envs.sh/zkN.mp4" type="video/mp4">
+    <video autoplay muted loop id="backgroundVideo" class="video-background">
+        <source src="https://envs.sh/KHp.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
-    <button id="soundToggle" class="sound-button">
-        <ion-icon name="volume-mute"></ion-icon>
-    </button>
-    <h1>Asinfo?</h1>
+    <h1>info?</h1>
     <div class="navigation">
         <ul>
             <li class="list active">
@@ -41,6 +38,11 @@
                     <span class="icon"><ion-icon name="share-social"></ion-icon></span>
                 </a>
             </li>
+            <li class="list">
+                <a href="#" id="muteToggle">
+                    <span class="icon"><ion-icon name="volume-high"></ion-icon></span>
+                </a>
+            </li>
             <div class="indicator"></div>
         </ul>
     </div>
@@ -54,8 +56,9 @@
         const indicator = document.querySelector('.indicator');
         const infoContent = document.getElementById('infoContent');
         const infoContainer = document.querySelector('.info-container');
-        const soundToggle = document.getElementById('soundToggle');
-        const bgVideo = document.getElementById('bgVideo');
+        const video = document.getElementById('backgroundVideo');
+        const muteToggle = document.getElementById('muteToggle');
+        const volumeIcon = muteToggle.querySelector('ion-icon');
 
         function setIndicator() {
             const activeItem = document.querySelector('.list.active');
@@ -129,19 +132,14 @@
             }
         }
 
-        function toggleSound() {
-            if (bgVideo.muted) {
-                bgVideo.muted = false;
-                soundToggle.innerHTML = '<ion-icon name="volume-high"></ion-icon>';
-            } else {
-                bgVideo.muted = true;
-                soundToggle.innerHTML = '<ion-icon name="volume-mute"></ion-icon>';
-            }
+        function toggleMute() {
+            video.muted = !video.muted;
+            volumeIcon.name = video.muted ? 'volume-mute' : 'volume-high';
         }
 
-        soundToggle.addEventListener('click', toggleSound);
         list.forEach((item) => item.addEventListener('click', activeLink));
         window.addEventListener('load', setIndicator);
+        muteToggle.addEventListener('click', toggleMute);
     </script>
 </body>
-        </html>
+</html>
