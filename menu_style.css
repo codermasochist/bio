@@ -8,7 +8,8 @@
 }
 
 :root {
-    --clr: #f5f5f5; /* Светло-серый */
+    --clr: #ff6f61; /* Нежно-красный */
+    --dark-clr: #000000; /* Черный */
 }
 
 body.navigation {
@@ -16,19 +17,19 @@ body.navigation {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: var(--clr);
+    background: var(--dark-clr);
 }
 
 .navigation {
     width: 100px;
     height: auto;
     background: linear-gradient(45deg, 
-        rgba(255, 182, 193, 0.5),  /* Нежно-розовый */
-        rgba(238, 130, 238, 0.5),  /* Нежно-фиолетовый */
+        rgba(255, 105, 180, 0.5),  /* Нежно-красный */
+        rgba(255, 99, 71, 0.5),    /* Более ярко-красный */
         rgba(255, 105, 180, 0.6),  /* Нежно-красный */
-        rgba(238, 130, 238, 0.6),  /* Нежно-фиолетовый */
-        rgba(255, 182, 193, 0.7),  /* Нежно-розовый */
-        rgba(238, 130, 238, 0.8)   /* Нежно-фиолетовый */
+        rgba(255, 99, 71, 0.6),    /* Более ярко-красный */
+        rgba(255, 105, 180, 0.7),  /* Нежно-красный */
+        rgba(255, 99, 71, 0.8)     /* Более ярко-красный */
     );
     background-size: 400%;
     animation: gradientAnimation 8s ease infinite;
@@ -74,13 +75,13 @@ body.navigation {
     line-height: 75px;
     font-size: 1.5em;
     text-align: center;
-    color: var(--clr);
+    color: var(--dark-clr);
     z-index: 2;
 }
 
 .navigation ul li a .text {
     position: absolute;
-    color: var(--clr);
+    color: var(--dark-clr);
     font-weight: 400;
     font-size: 0.62em;
     letter-spacing: 0.05em;
@@ -100,7 +101,7 @@ body.navigation {
     left: 50%;
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 0, 0, 0.3); /* Ярко-красный */
     border-radius: 50%;
     border: 6px solid var(--clr);
     transition: 0.5s;
@@ -135,4 +136,4 @@ body.navigation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
+    }
