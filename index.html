@@ -11,10 +11,13 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <video autoplay muted loop class="video-background">
-        <source src="https://envs.sh/KHp.mp4" type="video/mp4">
+    <video autoplay muted loop class="video-background" id="bgVideo">
+        <source src="https://envs.sh/zkN.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
+    <button id="soundToggle" class="sound-button">
+        <ion-icon name="volume-mute"></ion-icon>
+    </button>
     <h1>info?</h1>
     <div class="navigation">
         <ul>
@@ -51,6 +54,8 @@
         const indicator = document.querySelector('.indicator');
         const infoContent = document.getElementById('infoContent');
         const infoContainer = document.querySelector('.info-container');
+        const soundToggle = document.getElementById('soundToggle');
+        const bgVideo = document.getElementById('bgVideo');
 
         function setIndicator() {
             const activeItem = document.querySelector('.list.active');
@@ -124,8 +129,19 @@
             }
         }
 
+        function toggleSound() {
+            if (bgVideo.muted) {
+                bgVideo.muted = false;
+                soundToggle.innerHTML = '<ion-icon name="volume-high"></ion-icon>';
+            } else {
+                bgVideo.muted = true;
+                soundToggle.innerHTML = '<ion-icon name="volume-mute"></ion-icon>';
+            }
+        }
+
+        soundToggle.addEventListener('click', toggleSound);
         list.forEach((item) => item.addEventListener('click', activeLink));
         window.addEventListener('load', setIndicator);
     </script>
 </body>
-</html>
+        </html>
