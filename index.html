@@ -38,6 +38,11 @@
                 </a>
             </li>
             <li class="list">
+                <a href="#">
+                    <span class="icon"><ion-icon name="briefcase"></ion-icon></span>
+                </a>
+            </li>
+            <li class="list">
                 <a href="#" id="muteToggle">
                     <span class="icon"><ion-icon name="volume-high"></ion-icon></span>
                 </a>
@@ -94,6 +99,7 @@
                 case 'person-circle':
                     content = `<h2>Bio</h2>
                                <p>Name: Àssa</p>
+                               <p>Gender: Male</p>
                                <p>Birthdate: 30 June.</p>
                                <p>Age: 16 y.o</p>
                                <h3>Hobbies:</h3>
@@ -121,7 +127,16 @@
                                    <li>My Instagram: <a href="https://www.instagram.com/codermasochist">click.</a></li>
                                    <li>My discord: <a href="https://discord.gg/6NbuC4Rx">click.</a></li>
                                    <li>My Telegram channel: <a href="http://t.me/makimalove">click.</a></li>
+                                   <li>Сигны Ассы: <a href="http://t.me/omnisex">click.</a></li>
                                </ul> The list will be updated.`;
+                    break;
+                case 'briefcase':
+                    content = `<h2>Communication with me:</h2>
+                               <p>Online: 7:00 - 22:00 (MSK, GMT+3)</p>
+                               <p>You can't write to me because you have spamblock? <a href="http://t.me/Assarobot?start=start">click here</a></p>
+                               <p>Userbot of: Hikka.<br>What is a Hikka userbot? <a href="https://telegra.ph/hikka-08-22">clickable.</a></p>
+                               <p>‼️ Read before you write to me: <a href="https://nometa.xyz">nometa.xyz</a></p>
+                               <p>If you did not receive a response within 24h, you were ignore.</p>`;
                     break;
             }
             if (iconName !== 'home') {
