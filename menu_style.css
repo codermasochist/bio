@@ -8,8 +8,8 @@
 }
 
 :root {
-    --clr: #ff6f61; /* Нежно-красный */
-    --dark-clr: #000000; /* Черный */
+    --clr: #ff0000; /* Красный для иконок */
+    --dark-clr: #ffffff; /* Белый для текста меню */
 }
 
 body.navigation {
@@ -23,22 +23,14 @@ body.navigation {
 .navigation {
     width: 100px;
     height: auto;
-    background: linear-gradient(45deg, 
-        rgba(255, 105, 180, 0.5),  /* Нежно-красный */
-        rgba(255, 99, 71, 0.5),    /* Более ярко-красный */
-        rgba(255, 105, 180, 0.6),  /* Нежно-красный */
-        rgba(255, 99, 71, 0.6),    /* Более ярко-красный */
-        rgba(255, 105, 180, 0.7),  /* Нежно-красный */
-        rgba(255, 99, 71, 0.8)     /* Более ярко-красный */
-    );
-    background-size: 400%;
-    animation: gradientAnimation 8s ease infinite;
+    background: rgba(255, 255, 255, 0.3); /* Прозрачный белый фон */
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    animation: backgroundAnimation 8s ease infinite; /* Анимация переливающегося фона */
 }
 
 .navigation ul {
@@ -75,13 +67,13 @@ body.navigation {
     line-height: 75px;
     font-size: 1.5em;
     text-align: center;
-    color: var(--dark-clr);
+    color: var(--clr); /* Красный для иконок */
     z-index: 2;
 }
 
 .navigation ul li a .text {
     position: absolute;
-    color: var(--dark-clr);
+    color: var(--clr); /* Красный для текста меню */
     font-weight: 400;
     font-size: 0.62em;
     letter-spacing: 0.05em;
@@ -101,9 +93,9 @@ body.navigation {
     left: 50%;
     width: 60px;
     height: 60px;
-    background: rgba(255, 0, 0, 0.3); /* Ярко-красный */
+    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный черный */
     border-radius: 50%;
-    border: 6px solid var(--clr);
+    border: 6px solid #000000; /* Черный цвет индикатора */
     transition: 0.5s;
     transform: translate(-50%, -50%);
 }
@@ -117,7 +109,7 @@ body.navigation {
     height: 20px;
     background: transparent;
     border-top-right-radius: 20px;
-    box-shadow: 1px -10px 0 0 var(--clr);
+    box-shadow: 1px -10px 0 0 #000000; /* Черный для стрелки индикатора */
 }
 
 .indicator::after {
@@ -129,11 +121,11 @@ body.navigation {
     height: 20px;
     background: transparent;
     border-top-left-radius: 20px;
-    box-shadow: -1px -10px 0 0 var(--clr);
+    box-shadow: -1px -10px 0 0 #000000; /* Черный для стрелки индикатора */
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-    }
+@keyframes backgroundAnimation {
+    0% { background: rgba(255, 255, 255, 0.3); } /* Прозрачный белый */
+    50% { background: rgba(255, 255, 255, 0.6); } /* Менее прозрачный белый */
+    100% { background: rgba(255, 255, 255, 0.3); } /* Прозрачный белый */
+}
