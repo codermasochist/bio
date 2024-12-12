@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+}
+
+/* Настройки для ПК (ширина экрана более 768px) */
+@media screen and (min-width: 768px) {
+    .video-background {
+        width: 177.78vh; /* Высота экрана * 16/9 для 16:9 */
+        height: 100vw; /* 100% ширины экрана */
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+}
+
+h1 {
+    position: relative;
+    z-index: 100;
+    color: rgba(255, 0, 0, 0.7); /* Переливающийся красный */
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Pixelify Sans', sans-serif;
+}
