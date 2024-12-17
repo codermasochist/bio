@@ -9,10 +9,20 @@
     <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        body {
+            background: url('https://envs.sh/1wG_poster.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            overflow: hidden;
+        } 
+        .video-background {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <!-- Видео с атрибутом poster -->
-    <video autoplay muted loop id="backgroundVideo" class="video-background" poster="poster.jpg">
+    <video autoplay muted loop id="backgroundVideo" class="video-background" poster="https://envs.sh/1wG_poster.jpg">
         <source src="https://envs.sh/1wG.mp4" type="video/mp4">
     </video>
     <h1>Asinfo</h1>
@@ -51,17 +61,25 @@
             <div class="indicator"></div>
         </ul>
     </div>
-    
+
     <div class="info-container">
         <div class="info-content" id="infoContent"></div>
     </div>
 
     <script>
+        const video = document.getElementById('backgroundVideo');
+        const body = document.body;
+
+        // Отображаем видео только после загрузки
+        video.addEventListener('canplaythrough', () => {
+            video.style.display = 'block';
+            body.style.background = 'none'; // Убираем статичный фон
+        });
+
         const list = document.querySelectorAll('.list');
         const indicator = document.querySelector('.indicator');
         const infoContent = document.getElementById('infoContent');
         const infoContainer = document.querySelector('.info-container');
-        const video = document.getElementById('backgroundVideo');
         const muteToggle = document.getElementById('muteToggle');
         const volumeIcon = muteToggle.querySelector('ion-icon');
 
