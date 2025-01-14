@@ -31,6 +31,12 @@
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Тень справа */
     transition: right 0.5s ease; /* Плавный переход */
     z-index: 10;
+
+    display: flex; /* Используем flexbox */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    text-align: center; /* Текст выравниваем по центру */
+    overflow: hidden; /* Обрезаем текст, выходящий за границы */
 }
 
 .info-container.show {
@@ -40,6 +46,8 @@
 .info-content {
     padding: 20px;
     color: rgba(34, 34, 34, 0.7); /* Темно-серый цвет текста с прозрачностью */
+    word-wrap: break-word; /* Перенос длинных слов на новую строку */
+    max-width: 100%; /* Ограничение ширины текста */
 }
 
 @keyframes gradientAnimation {
