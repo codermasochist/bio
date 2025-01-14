@@ -9,30 +9,6 @@
     <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <style>
-        body {
-    background: url('https://envs.sh/skj.mp4') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    overflow: hidden;
-}
-
-.video-background {
-    display: none;
-}
-
-.info-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100vh;
-    padding-left: 5%;
-}
-
-.info-content {
-    text-align: left;
-}
-    </style>
 </head>
 <body>
     <video autoplay muted loop id="backgroundVideo" class="video-background" poster="https://envs.sh/vzO.jpg">
@@ -120,58 +96,32 @@
                     content = '<h2>Welcome to Home!</h2>';
                     infoContainer.classList.remove('show');
                     break;
-case 'game-controller':
-    content = `<h2>Games:</h2>
-               <p>I play:</p>
-               <ul style="list-style-type: none; padding: 0; margin: 0 auto; text-align: left;">
-                   <li>Genshin Impact</li>
-                   <li>Mobile Legends</li>
-               </ul>
-               <p>What else shall we play?)</p>`;
-    break;
-case 'person-circle':
-    content = `<h2>Bio</h2>
-              <p>Name: Àssa</p>
-              <p>Gender: Male</p>
-              <p>Birthdate: 30 June.</p>
-              <p>Age: 16 y.o</p>
-              <h3>Hobbies:</h3>
-              <ul style="list-style-type: none; padding: 0; margin: 0 auto; text-align: left;">
-                <li>Watching anime</li>
-                <li>Volleyball</li>
-                <li>Coding</li>
-              </ul>
-              <h3>Favorite anime:</h3>
-              <ul style="list-style-type: none; padding: 0; margin: 0 auto; text-align: left;">
-                <li>Darling in the Franxx</li>
-                <li>Evangelion</li>
-                <li>High School DxD</li>
-                <li>Jujutsu Kaisen</li>
-                <li>Chainsaw Man</li>
-              </ul>
-              <p>(The list will be updated...)</p>`;
-    break;
-case 'share-social':
-    content = `<h2>Links to My Social Networks:</h2>
-               <ul style="list-style-type: none; padding: 0; margin: 0 auto; text-align: left;">
-                <li>My Telegram: <a href="http://codermasochist.t.me/">click.</a></li>
-                <li>My Telegram second account: <a href="http://arhess.t.me/">click.</a></li>
-                <li>My TikTok: <a href="https://www.tiktok.com/@codermasohist?_t=8r5CIcyrqMo&_r=1">click.</a></li>
-                <li>My Instagram: <a href="https://www.instagram.com/codermasochist">click.</a></li>
-                <li>My Discord: <a href="https://discord.gg/6NbuC4Rx">click.</a></li>
-                <li>My Telegram channel: <a href="http://t.me/makimalove">click.</a></li>
-                <li>Сигны Ассы: <a href="http://t.me/omnisex">click.</a></li>
-               </ul> 
-               <p>The list will be updated.</p>`;
-    break;
-case 'briefcase':
-    content = `<h2>Communication with me:</h2>
-               <p>Online: 7:00 - 22:00 (MSK, GMT+3)</p>
-               <p>You can't write to me because you have spamblock? <a href="http://t.me/Assarobot?start=start">click here</a></p>
-               <p>Userbot of: Hikka.<br>What is a Hikka userbot? <a href="https://telegra.ph/hikka-08-22">clickable.</a></p>
-               <p>‼️ Read before you write to me: <a href="https://nometa.xyz">nometa.xyz</a></p>
-               <p>If you did not receive a response within 24h, you were ignored.</p>`;
-    break;
+                case 'game-controller':
+                    content = `<h2>Games:</h2>
+                               <p>I play:</p>
+                               <ul>
+                                   <li>Genshin Impact</li>
+                                   <li>Mobile Legends</li>
+                               </ul>`;
+                    break;
+                case 'person-circle':
+                    content = `<h2>Bio</h2>
+                              <p>Name: Àssa</p>
+                              <p>Gender: Male</p>
+                              <p>Birthdate: 30 June.</p>
+                              <p>Age: 16 y.o</p>`;
+                    break;
+                case 'share-social':
+                    content = `<h2>Links to My Social Networks:</h2>
+                               <ul>
+                                <li><a href="http://codermasochist.t.me/">Telegram</a></li>
+                                <li><a href="http://arhess.t.me/">Second account</a></li>
+                               </ul>`;
+                    break;
+                case 'briefcase':
+                    content = `<h2>Communication with me:</h2>
+                               <p>Online: 7:00 - 22:00 (MSK, GMT+3)</p>`;
+                    break;
             }
             if (iconName !== 'home') {
                 infoContent.innerHTML = content;
