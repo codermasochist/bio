@@ -1,43 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .info-container {
     position: fixed;
-    font-size: 1.2rem; /* Уменьшаем размер текста */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Выравниваем текст по левому краю */
-    justify-content: flex-start; /* Располагаем текст сверху */
-    text-align: left;
-    color: black;
-    font-weight: 500;
     top: 0;
-    right: -28vw; /* Начальное положение вне экрана */
-    width: 25vw; /* Возвращаем прежнюю ширину бокового меню */
-    height: 100%; /* Прежняя высота бокового меню */
+    right: -300px; /* Начальное положение вне экрана */
+    width: 300px; /* Ширина бокового меню */
+    height: 100%; /* Высота бокового меню */
     background: linear-gradient(45deg, 
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0.4),
-        rgba(255, 255, 255, 0.5),
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.6),
-        rgba(255, 255, 255, 0.5),
-        rgba(255, 255, 255, 0.4),
-        rgba(255, 255, 255, 0.3)
+        rgba(255, 255, 255, 0.3),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.4),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.5),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.6),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.7),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.8),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.9),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.6),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.5),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.4),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.3)   /* Полупрозрачный белый */
     );
-    background-size: 400%;
-    animation: gradientAnimation 10s ease infinite;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-    transition: right 0.5s ease;
+    background-size: 400%; /* Увеличиваем размер фона для анимации */
+    animation: gradientAnimation 10s ease infinite; /* Анимация градиента */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Тень справа */
+    transition: right 0.5s ease; /* Плавный переход */
     z-index: 10;
-    padding: 20px;
 }
 
 .info-container.show {
@@ -45,13 +38,16 @@
 }
 
 .info-content {
-    margin-top: 20px;
-    margin-left: 10%; /* Сдвигаем текст влево, чтобы компенсировать уменьшение ширины */
-    color: rgba(34, 34, 34, 0.8);
-    word-wrap: break-word;
-    max-width: 90%; 
-    font-size: 1.1rem; /* Дополнительно уменьшаем размер текста для улучшенной читаемости */
-    line-height: 1.5;
+    padding: 20px;
+    color: rgba(34, 34, 34, 0.7); /* Темно-серый цвет текста с прозрачностью */
+    font-size: 1rem; /* Уменьшаем размер текста для улучшенной читаемости */
+    line-height: 1.5; /* Увеличиваем межстрочный интервал для удобства */
+    text-align: left; /* Выравнивание текста слева */
+    position: absolute;
+    top: 50%; /* Центрируем текст по вертикали */
+    left: 10%; /* Немного сдвигаем текст вправо */
+    transform: translateY(-50%); /* Центрирование по вертикали */
+    width: 80%; /* Ограничиваем ширину текста */
 }
 
 @keyframes gradientAnimation {
