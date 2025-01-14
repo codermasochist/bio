@@ -15,9 +15,53 @@
             background-size: cover;
             margin: 0;
             overflow: hidden;
-        } 
+        }
+
         .video-background {
             display: none;
+        }
+
+        .info-content {
+            text-align: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+
+        .info-content h2 {
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .info-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-content ul li {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .social-buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .social-buttons a:hover {
+            background-color: #555;
         }
     </style>
 </head>
@@ -79,7 +123,6 @@
         const list = document.querySelectorAll('.list');
         const indicator = document.querySelector('.indicator');
         const infoContent = document.getElementById('infoContent');
-        const infoContainer = document.querySelector('.info-container');
         const muteToggle = document.getElementById('muteToggle');
         const volumeIcon = muteToggle.querySelector('ion-icon');
 
@@ -103,61 +146,42 @@
         function showInfo(iconName) {
             let content = '';
             switch (iconName) {
-                case 'home':
-                    content = '<h2>Welcome to Home!</h2>';
-                    infoContainer.classList.remove('show');
-                    break;
-                case 'game-controller':
-                    content = `<h2>Games:</h2>
-                               <ul>
-                                   <li>Genshin Impact</li>;
-                    break;
                 case 'person-circle':
-                    content = `<h2>Bio</h2>
-                               <p>Name: Àssa</p>
-                               <p>Gender: Male</p>
-                               <p>Birthdate: 30 June.</p>
-                               <p>Age: 16 y.o</p>
-                               <h3>Hobbies:</h3>
-                               <ul>
-                                   <li>Watching anime</li>
-                                   <li>Volleyball</li>
-                                   <li>coding...</li>
-                               </ul>
-                               <h3>Favorite anime:</h3>
-                               <ul>
-                                   <li>Darling in the Franxx</li>
-                                   <li>Evangelion</li>
-                                   <li>High School DxD</li>
-                                   <li>Jujutsu Kaisen</li>
-                                   <li>Chainsaw Man</li>
-                               </ul>
-                               <p>(The list will be updated...)</p>`;
+                    content = `
+                        <h2>Биография</h2>
+                        <ul>
+                            <li>• Имя: Àssa</li>
+                            <li>• Возраст: 16 лет</li>
+                            <li>• Дата рождения: 30 июня</li>
+                        </ul>
+                        <h3>Хобби:</h3>
+                        <ul>
+                            <li>• Аниме</li>
+                            <li>• Волейбол</li>
+                            <li>• Программирование</li>
+                        </ul>
+                        <h3>Любимые аниме:</h3>
+                        <ul>
+                            <li>• Darling in the Franxx</li>
+                            <li>• Evangelion</li>
+                            <li>• High School DxD</li>
+                            <li>• Jujutsu Kaisen</li>
+                            <li>• Chainsaw Man</li>
+                        </ul>`;
                     break;
                 case 'share-social':
-                    content = `<h2>Links to My Social Networks:</h2>
-                               <ul>
-                                   <li>My Telegram: <a href="http://codermasochist.t.me/">click.</a></li>
-                                   <li>My TikTok: <a href="https://www.tiktok.com/@codermasochist?_t=8r5CIcyrqMo&_r=1">click.</a></li>
-                                   <li>My Instagram: <a href="https://www.instagram.com/codermasochist">click.</a></li>
-                                   <li>My discord: <a href="https://discord.gg/6NbuC4Rx">click.</a></li>
-                                   <li>My Telegram channel: <a href="http://t.me/makimalove">click.</a></li>
-                                   <li>Сигны Ассы: <a href="http://t.me/omnisex">click.</a></li>
-                               </ul> The list will be updated.`;
-                    break;
-                case 'briefcase':
-                    content = `<h2>Communication with me:</h2>
-                               <p>Online: 7:00 - 22:00 (MSK, GMT+3)</p>
-                               <p>You can't write to me because you have spamblock? <a href="http://t.me/Assarobot?start=start">click here</a></p>
-                               <p>Userbot of: Hikka.<br>What is a Hikka userbot? <a href="https://telegra.ph/hikka-08-22">clickable.</a></p>
-                               <p>‼️ Read before you write to me: <a href="https://nometa.xyz">nometa.xyz</a></p>
-                               <p>If you did not receive a response within 24h, you were ignore.</p>`;
+                    content = `
+                        <h2>Мои соцсети</h2>
+                        <div class="social-buttons">
+                            <a href="http://codermasochist.t.me/" target="_blank">Telegram</a>
+                            <a href="https://www.tiktok.com/@codermasochist?_t=8r5CIcyrqMo&_r=1" target="_blank">TikTok</a>
+                            <a href="https://www.instagram.com/codermasochist" target="_blank">Instagram</a>
+                            <a href="https://discord.gg/6NbuC4Rx" target="_blank">Discord</a>
+                            <a href="http://t.me/makimalove" target="_blank">Канал</a>
+                        </div>`;
                     break;
             }
-            if (iconName !== 'home') {
-                infoContent.innerHTML = content;
-                infoContainer.classList.add('show');
-            }
+            infoContent.innerHTML = content;
         }
 
         function toggleMute() {
