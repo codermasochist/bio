@@ -70,10 +70,9 @@
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
 
-        // Отображаем видео только после загрузки
         video.addEventListener('canplaythrough', () => {
             video.style.display = 'block';
-            body.style.background = 'none'; // Убираем статичный фон
+            body.style.background = 'none'; 
         });
 
         const list = document.querySelectorAll('.list');
@@ -109,10 +108,8 @@
                     break;
                 case 'game-controller':
                     content = `<h2>Games:</h2>
-                               <p>I play:</p>
                                <ul>
                                    <li>Genshin Impact</li>
-                                   <li>Mobile Legends</li>
                                </ul> what else shall we play?)`;
                     break;
                 case 'person-circle':
@@ -125,7 +122,7 @@
                                <ul>
                                    <li>Watching anime</li>
                                    <li>Volleyball</li>
-                                   <li>Programming & coding (soon...)</li>
+                                   <li>coding...</li>
                                </ul>
                                <h3>Favorite anime:</h3>
                                <ul>
