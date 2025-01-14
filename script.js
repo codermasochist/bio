@@ -8,3 +8,9 @@ window.addEventListener('scroll', function () {
     // Применяем размытие в зависимости от прокрутки
     video.style.filter = `blur(${scrollPosition / 10}px)`; // Увеличиваем размытие с прокруткой
 });
+
+// Убираем размытие после загрузки видео
+let video = document.querySelector('.video-background');
+video.addEventListener('loadeddata', function() {
+    video.classList.add('loaded'); // Убираем размытие
+});
