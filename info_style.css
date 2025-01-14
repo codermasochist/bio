@@ -47,3 +47,11 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+/* Добавленные стили для выравнивания текста иконок */
+.navigation .list .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Убедитесь, что иконка занимает всю высоту родителя */
+}
