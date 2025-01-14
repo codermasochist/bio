@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .info-container {
     position: fixed;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Выравниваем текст по левому краю */
+    justify-content: flex-start; /* Располагаем текст сверху */
+    text-align: left;
+    color: black;
+    font-weight: 500;
     top: 0;
-    right: -300px; /* Начальное положение вне экрана */
-    width: 300px;
+    right: -28vw; /* Начальное положение вне экрана */
+    width: 28vw;
     height: 100%;
     background: linear-gradient(45deg, 
         rgba(255, 255, 255, 0.3),  /* Полупрозрачный белый */
@@ -31,12 +37,7 @@
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Тень справа */
     transition: right 0.5s ease; /* Плавный переход */
     z-index: 10;
-
-    display: flex; /* Используем flexbox */
-    justify-content: center; /* Центрируем по горизонтали */
-    align-items: center; /* Центрируем по вертикали */
-    text-align: center; /* Текст выравниваем по центру */
-    overflow: hidden; /* Обрезаем текст, выходящий за границы */
+    padding: 20px;
 }
 
 .info-container.show {
@@ -44,10 +45,11 @@
 }
 
 .info-content {
-    padding: 20px;
-    color: rgba(34, 34, 34, 0.7); /* Темно-серый цвет текста с прозрачностью */
-    word-wrap: break-word; /* Перенос длинных слов на новую строку */
-    max-width: 100%; /* Ограничение ширины текста */
+    margin-top: 20px; /* Отступ сверху для текста */
+    margin-left: 20%; /* Сдвигаем текст вправо */
+    color: rgba(34, 34, 34, 0.8); /* Цвет текста */
+    word-wrap: break-word; /* Перенос длинных слов */
+    max-width: 90%; /* Ограничиваем ширину текста */
 }
 
 @keyframes gradientAnimation {
