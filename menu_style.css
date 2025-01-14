@@ -9,9 +9,10 @@
 
 :root {
     --clr: #ff0000; /* Ярко красный для иконок */
-    --dark-clr: #ffffff; /* Белый для текста меню */
-    --bg-clr: #8a2be2; /* Фиолетовый для фона панели */
-    --indicator-clr: rgba(0, 255, 0, 0.7); /* Ярко зеленый, но с прозрачностью для индикатора */
+    --dark-clr: #ffffff; /* Белый фон */
+    --bg-clr: rgba(138, 43, 226, 0.3); /* Прозрачно-фиолетовый */
+    --bg-clr-hover: rgba(192, 192, 192, 0.2); /* Прозрачно серебристый оттенок */
+    --indicator-clr: rgba(0, 0, 255, 0.5); /* Прозрачно-синий для индикатора */
 }
 
 body.navigation {
@@ -25,7 +26,7 @@ body.navigation {
 .navigation {
     width: 100px;
     height: auto;
-    background: var(--bg-clr); /* Фиолетовый для фона панели */
+    background: var(--bg-clr); /* Прозрачно-фиолетовый */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -95,7 +96,7 @@ body.navigation {
     left: 50%;
     width: 60px;
     height: 60px;
-    background: var(--indicator-clr); /* Ярко зеленый, но полупрозрачный */
+    background: var(--indicator-clr); /* Прозрачно-синий */
     border-radius: 50%;
     border: 6px solid #000000; /* Черный цвет индикатора */
     transition: 0.5s;
@@ -127,7 +128,7 @@ body.navigation {
 }
 
 @keyframes backgroundAnimation {
-    0% { background: var(--bg-clr); } /* Фиолетовый для фона */
-    50% { background: rgba(138, 43, 226, 0.6); } /* Менее прозрачный фиолетовый */
-    100% { background: var(--bg-clr); } /* Фиолетовый для фона */
+    0% { background: var(--bg-clr); } /* Прозрачно-фиолетовый */
+    50% { background: var(--bg-clr-hover); } /* Прозрачно серебристый оттенок */
+    100% { background: var(--bg-clr); } /* Прозрачно-фиолетовый */
 }
