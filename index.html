@@ -155,8 +155,11 @@
                     break;
             }
             if (iconName !== 'home') {
-                infoContent.innerHTML = content;
-                infoContainer.classList.add('show');
+    infoContent.innerHTML = content;
+    infoContainer.classList.add('show');
+} else {
+    infoContainer.classList.remove('show');
+            }
             }
         }
 
