@@ -12,13 +12,13 @@
     flex-direction: column;
     align-items: flex-start; /* Выравниваем текст по левому краю */
     justify-content: flex-start; /* Располагаем текст сверху */
-    text-align: left; /* Выравниваем текст по левому краю */
+    text-align: left;
     color: black;
     font-weight: 500;
     top: 0;
     right: -28vw; /* Начальное положение вне экрана */
-    width: 28vw;
-    height: 100%; /* Возвращаем прежнюю высоту */
+    width: 25vw; /* Возвращаем прежнюю ширину бокового меню */
+    height: 100%; /* Прежняя высота бокового меню */
     background: linear-gradient(45deg, 
         rgba(255, 255, 255, 0.3),
         rgba(255, 255, 255, 0.4),
@@ -45,13 +45,13 @@
 }
 
 .info-content {
-    margin-top: 20px; /* Отступ сверху для текста */
-    margin-left: 20%; /* Сдвигаем текст вправо */
+    margin-top: 20px;
+    margin-left: 10%; /* Сдвигаем текст влево, чтобы компенсировать уменьшение ширины */
     color: rgba(34, 34, 34, 0.8);
     word-wrap: break-word;
-    max-width: 90%; /* Ограничиваем ширину текста */
-    font-size: 1.2rem; /* Уменьшаем размер текста */
-    line-height: 1.5; /* Увеличиваем межстрочное расстояние для лучшей читаемости */
+    max-width: 90%; 
+    font-size: 1.1rem; /* Дополнительно уменьшаем размер текста для улучшенной читаемости */
+    line-height: 1.5;
 }
 
 @keyframes gradientAnimation {
