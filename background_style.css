@@ -1,69 +1,25 @@
-body, html {
+body {
     margin: 0;
     padding: 0;
-    height: 100%;
     overflow: hidden;
 }
 
 .video-background {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: -1;
-    transform: translate(-50%, -50%);
-    filter: blur(5px); /* Размытие постера */
-    transition: filter 0.3s ease-in-out; /* Плавный переход */
 }
 
-/* Когда видео начнется играть, убираем размытие */
-.video-background[poster] {
-    filter: blur(5px); /* Размытие постера */
-}
-
-.video-background:not([poster]) {
-    filter: none; /* Убираем размытие, когда видео загружено */
-}
-
-/* Настройки для ПК (ширина экрана более 768px) */
-@media screen and (min-width: 768px) {
-    .video-background {
-        width: 177.78vh; /* Высота экрана * 16/9 для 16:9 */
-        height: 100vw; /* 100% ширины экрана */
-        transform: translate(-50%, -50%) rotate(-90deg);
-    }
-}
-
+/* Дополнительные стили для элементов на странице */
 h1 {
-    position: relative;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 3em;
     z-index: 1;
-    color: rgba(255, 0, 0, 0.7); /* Переливающийся красный */
-    text-align: center;
-    margin-top: 5%;
-    margin-left: 40%;
-    border-radius: 30px;
-    border: 10px solid rgba(255, 0, 0, 0.7); /* Красный */
-    animation: borderAnimation 5s infinite, textColorAnimation 5s infinite;
-    display: inline-block;
-    padding: 10px 20px;
-}
-
-@keyframes borderAnimation {
-    0%, 100% { border: 4px solid rgba(255, 0, 0, 0.7); } /* Красный */
-    10%, 70% { border: 4px solid rgba(139, 0, 0, 0.8); } /* Темно-красный */
-    20%, 60% { border: 4px solid rgba(255, 99, 71, 0.6); } /* Нежно-красный */
-    30%, 50% { border: 4px solid rgba(255, 69, 0, 0.5); } /* Ярко-оранжевый */
-    40% { border: 4px solid rgba(0, 0, 0, 0.4); } /* Черный */
-    80%, 90% { border: 4px solid rgba(255, 69, 0, 0.5); } /* Ярко-оранжевый */
-}
-
-@keyframes textColorAnimation {
-    0%, 100% { color: rgba(255, 0, 0, 0.7); } /* Красный */
-    10%, 70% { color: rgba(139, 0, 0, 0.8); } /* Темно-красный */
-    20%, 60% { color: rgba(255, 99, 71, 0.6); } /* Нежно-красный */
-    30%, 50% { color: rgba(255, 69, 0, 0.5); } /* Ярко-оранжевый */
-    40% { color: rgba(0, 0, 0, 0.4); } /* Черный */
-    80%, 90% { color: rgba(255, 69, 0, 0.5); } /* Ярко-оранжевый */
 }
