@@ -59,10 +59,9 @@
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
 
-        // Отображаем видео только после загрузки
         video.addEventListener('canplaythrough', () => {
             video.style.display = 'block';
-            body.style.background = 'none'; // Убираем статичный фон
+            body.style.background = 'none';
         });
 
         const list = document.querySelectorAll('.list');
@@ -98,29 +97,31 @@
                     break;
                 case 'game-controller':
                     content = `<h2>Games:</h2>
-                               <p>? ? ?</p>
-                               <ul>
-                                   <li>Genshin Impact</li>
-                                   <li>.../</li>
-                               </ul>`;
+                               <p>Genshin Impact</p>
+                               <p>CS2, Standoff</p>
+                               <p>Durak, Chess &amp; Checkers</p>`;
                     break;
                 case 'person-circle':
                     content = `<h2>Bio</h2>
-                              <p>Name: Àssa</p>
-                              <p>Gender: Male</p>
-                              <p>Birthdate: 30 June.</p>
-                              <p>Age: 16 y.o</p>`;
+                              <p>Name: ????</p>
+                              <p>Nickname: Assa.</p>
+                              <p>Birthdate: 30.06.2008 (16 y. o.)</p>
+                              <p>Hobbies: anime, coding...</p>`;
                     break;
                 case 'share-social':
-                    content = `<h2>Links to My Social Networks:</h2>
-                               <ul>
-                                <li><a href="http://codermasochist.t.me/">Telegram</a></li>
-                                <li><a href="http://arhess.t.me/">Second account</a></li>
-                               </ul>`;
+                    content = `<h2>My social links:</h2>
+                               <p><a href="http://t.me/codermasochist">Telegram account</a>. (click)</p>
+                               <p><a href="http://t.me/makimalove">Telegram channel</a>. (click)</p>
+                               <p>🐈‍⬛️ My GitHub: <a href="http://GitHub.com/codermasochist">click here to go.</a></p>
+                               <p><a href="http://GitHub.com/codermasochist/AsModules">My module</a>. (click)</p>
+                               <p><a href="https://www.tiktok.com/@codermasochist?_t=ZT-8t3fMPmc6l4&_r=1">TikTok</a> &amp; <a href="https://www.instagram.com/codermasochist/profilecard/?igsh=MWlzMWd5Z2JwaDZ1Zw==">Inst</a>. (click)</p>
+                               <p>Мои сигны 👀 — <a href="http://t.me/omnisex">click.</a></p>`;
                     break;
                 case 'briefcase':
-                    content = `<h2>Communication with me:</h2>
-                               <p>Online: 7:00 - 22:00 (MSK, GMT+3)</p>`;
+                    content = `<h2>Communication:</h2>
+                               <p>If you haven't responded within 24h, you've been ignored.</p>
+                               <p>Online: 11:00-22:00 (мск)</p>
+                               <p>Before writing to me, please read/visit — <a href="https://nometa.xyz">nometa.xyz</a></p>`;
                     break;
             }
             if (iconName !== 'home') {
