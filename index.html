@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assa</title>
-    <link rel="stylesheet" href="background_style.css">
-    <link rel="stylesheet" href="info_style.css">
-    <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <video autoplay muted loop id="backgroundVideo" class="video-background" poster="https://envs.sh/vzO.jpg">
+    <canvas id="posterCanvas"></canvas>
+    <video autoplay muted loop preload="auto" id="backgroundVideo" style="display: none;">
+        <source src="https://envs.sh/skj_low.mp4" type="video/mp4">
         <source src="https://envs.sh/skj.mp4" type="video/mp4">
     </video>
     <h1>info</h1>
@@ -50,26 +49,62 @@
             <div class="indicator"></div>
         </ul>
     </div>
-
     <div class="info-container">
         <div class="info-content" id="infoContent"></div>
     </div>
 
     <script>
-        const video = document.getElementById('backgroundVideo');
-        const body = document.body;
+        const posterUrl = "https://envs.sh/vzO.jpg"; // Ссылка на постер
+        const canvas = document.getElementById("posterCanvas");
+        const ctx = canvas.getContext("2d");
+        const video = document.getElementById("backgroundVideo");
 
-        video.addEventListener('canplaythrough', () => {
-            video.style.display = 'block';
-            body.style.background = 'none';
+        const img = new Image();
+        img.src = posterUrl;
+
+        img.onload = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Применяем размытие к изображению
+            ctx.filter = "blur(10px)";
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+
+        // Скрываем canvas, когда видео загружено
+        video.addEventListener("canplaythrough", () => {
+            canvas.style.display = "none";
+            video.style.display = "block";
         });
 
+        // Поддержка изменения размера окна
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            ctx.filter = "blur(10px)";
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        });
+
+        // Мьют/анмьют видео
+        const muteToggle = document.getElementById('muteToggle');
+        const volumeIcon = muteToggle.querySelector('ion-icon');
+
+        function toggleMute() {
+            video.muted = !video.muted;
+            volumeIcon.name = video.muted ? 'volume-mute' : 'volume-high';
+        }
+
+        muteToggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            toggleMute();
+        });
+
+        // Установка активной ссылки
         const list = document.querySelectorAll('.list');
         const indicator = document.querySelector('.indicator');
         const infoContent = document.getElementById('infoContent');
         const infoContainer = document.querySelector('.info-container');
-        const muteToggle = document.getElementById('muteToggle');
-        const volumeIcon = muteToggle.querySelector('ion-icon');
 
         function setIndicator() {
             const activeItem = document.querySelector('.list.active');
@@ -130,19 +165,8 @@
             }
         }
 
-        function toggleMute() {
-            video.muted = !video.muted;
-            volumeIcon.name = video.muted ? 'volume-mute' : 'volume-high';
-        }
-
         list.forEach((item) => item.addEventListener('click', activeLink));
         window.addEventListener('load', setIndicator);
-
-        muteToggle.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            toggleMute();
-        });
     </script>
 </body>
 </html>
