@@ -42,17 +42,12 @@
     color: rgba(34, 34, 34, 0.7);
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 .navigation .list {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+    flex-direction: column;
 }
 
 .navigation .list .icon {
@@ -61,4 +56,10 @@
     justify-content: center;
     height: 100%;
     width: 100%;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
