@@ -19,6 +19,65 @@
         .video-background {
             display: none;
         }
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .navigation li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navigation .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .navigation .list {
+            cursor: pointer;
+            color: white;
+        }
+
+        .navigation .active {
+            color: #ff6347; /* Цвет для активной иконки */
+        }
+
+        .navigation .indicator {
+            position: absolute;
+            width: 5px;
+            height: 40px;
+            background: #ff6347;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: top 0.3s ease;
+        }
+
+        .info-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .info-container.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -70,9 +129,10 @@
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
 
+        // Отображаем видео только после загрузки
         video.addEventListener('canplaythrough', () => {
             video.style.display = 'block';
-            body.style.background = 'none'; 
+            body.style.background = 'none'; // Убираем статичный фон
         });
 
         const list = document.querySelectorAll('.list');
@@ -108,8 +168,10 @@
                     break;
                 case 'game-controller':
                     content = `<h2>Games:</h2>
+                               <p>I play:</p>
                                <ul>
                                    <li>Genshin Impact</li>
+                                   <li>Mobile Legends</li>
                                </ul> what else shall we play?)`;
                     break;
                 case 'person-circle':
@@ -122,7 +184,7 @@
                                <ul>
                                    <li>Watching anime</li>
                                    <li>Volleyball</li>
-                                   <li>coding...</li>
+                                   <li>Programming & coding (soon...)</li>
                                </ul>
                                <h3>Favorite anime:</h3>
                                <ul>
@@ -167,12 +229,7 @@
         }
 
         list.forEach((item) => item.addEventListener('click', activeLink));
-        window.addEventListener('load', setIndicator);
-
-        muteToggle.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            toggleMute();
+        muteToggle();
         });
     </script>
 </body>
