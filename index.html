@@ -15,7 +15,8 @@
             background-size: cover;
             margin: 0;
             overflow: hidden;
-        } 
+        }
+
         .video-background {
             display: none;
         }
@@ -23,31 +24,41 @@
         .info-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Текст размещен выше */
             text-align: center;
             padding: 20px;
+            margin-top: 10%; /* Регулируем высоту текста */
+        }
+
+        .info-content {
+            max-width: 800px;
+            line-height: 1.8;
+            font-size: 18px;
         }
 
         .social-buttons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             gap: 10px;
+            margin-top: 20px;
         }
 
         .social-buttons a {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #333;
-            color: #fff;
-            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #555;
+            color: white;
             text-decoration: none;
-            font-size: 16px;
-            transition: background 0.3s;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
         }
 
         .social-buttons a:hover {
-            background: #555;
+            background-color: #333;
         }
     </style>
 </head>
@@ -100,9 +111,10 @@
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
 
+        // Отображаем видео только после загрузки
         video.addEventListener('canplaythrough', () => {
             video.style.display = 'block';
-            body.style.background = 'none';
+            body.style.background = 'none'; // Убираем статичный фон
         });
 
         const list = document.querySelectorAll('.list');
@@ -136,55 +148,42 @@
                     content = '<h2>Welcome to Home!</h2>';
                     infoContainer.classList.remove('show');
                     break;
-                case 'game-controller':
-                    content = `<h2>Games:</h2>
-                               <ul>
-                                   <li>Genshin Impact</li>
-                               </ul>`;
-                    break;
                 case 'person-circle':
-                    content = `<h2>Биография</h2>
-                               <p>• Имя: Àssa</p>
-                               <p>• Пол: Мужской</p>
-                               <p>• Возраст: 16 лет</p>
-                               <p>• День рождения: 30 июня</p>
-                               <h3>Хобби:</h3>
-                               <ul>
-                                   <li>Смотреть аниме</li>
-                                   <li>Волейбол</li>
-                                   <li>Кодинг</li>
-                               </ul>
-                               <h3>Любимые аниме:</h3>
-                               <ul>
-                                   <li>Darling in the Franxx</li>
-                                   <li>Evangelion</li>
-                                   <li>High School DxD</li>
-                                   <li>Jujutsu Kaisen</li>
-                                   <li>Chainsaw Man</li>
-                               </ul>`;
+                    content = `
+                        <h2>Биография</h2>
+                        <p>• Асса</p>
+                        <p>• Пол: Мужской</p>
+                        <p>• Дата рождения: 30 июня</p>
+                        <p>• Возраст: 16 лет</p>
+                        <h3>Хобби:</h3>
+                        <ul>
+                            <li>Смотреть аниме</li>
+                            <li>Играть в волейбол</li>
+                            <li>Кодить</li>
+                        </ul>
+                        <h3>Любимые аниме:</h3>
+                        <ul>
+                            <li>Darling in the Franxx</li>
+                            <li>Evangelion</li>
+                            <li>High School DxD</li>
+                            <li>Jujutsu Kaisen</li>
+                            <li>Chainsaw Man</li>
+                        </ul>
+                    `;
                     break;
                 case 'share-social':
-                    content = `<h2>Мои Социальные Сети:</h2>
-                               <div class="social-buttons">
-                                   <a href="http://codermasochist.t.me/">Telegram</a>
-                                   <a href="https://www.tiktok.com/@codermasochist?_t=8r5CIcyrqMo&_r=1">TikTok</a>
-                                   <a href="https://www.instagram.com/codermasochist">Instagram</a>
-                                   <a href="https://discord.gg/6NbuC4Rx">Discord</a>
-                                   <a href="http://t.me/makimalove">Telegram канал</a>
-                                   <a href="http://t.me/omnisex">Сигны</a>
-                               </div>`;
-                    break;
-                case 'briefcase':
-                    content = `<h2>Связь со мной:</h2>
-                               <p>Онлайн: 7:00 - 22:00 (MSK, GMT+3)</p>
-                               <p>Не можете написать? <a href="http://t.me/Assarobot?start=start">Нажмите здесь</a></p>
-                               <p>Больше информации о <a href="https://telegra.ph/hikka-08-22">Hikka Userbot</a></p>`;
+                    content = `
+                        <h2>Мои социальные сети</h2>
+                        <div class="social-buttons">
+                            <a href="http://codermasochist.t.me/" target="_blank"><ion-icon name="logo-telegram"></ion-icon></a>
+                            <a href="https://www.tiktok.com/@codermasochist" target="_blank"><ion-icon name="logo-tiktok"></ion-icon></a>
+                            <a href="https://www.instagram.com/codermasochist" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="https://discord.gg/6NbuC4Rx" target="_blank"><ion-icon name="logo-discord"></ion-icon></a>
+                        </div>
+                    `;
                     break;
             }
-            if (iconName !== 'home') {
-                infoContent.innerHTML = content;
-                infoContainer.classList.add('show');
-            }
+            infoContent.innerHTML = content;
         }
 
         function toggleMute() {
