@@ -14,8 +14,13 @@ body, html {
     object-fit: cover;
     z-index: -1;
     transform: translate(-50%, -50%);
-    filter: blur(5px); /* Размытие */
+    filter: blur(5px); /* Размытие для poster */
     transition: filter 0.3s ease-in-out; /* Плавный переход */
+}
+
+/* Когда видео загружено и начинает воспроизводиться, убираем размытие */
+.video-background.loaded {
+    filter: none;
 }
 
 /* Настройки для ПК (ширина экрана более 768px) */
@@ -41,6 +46,7 @@ h1 {
     padding: 10px 20px;
 }
 
+/* Анимации */
 @keyframes borderAnimation {
     0%, 100% { border: 4px solid rgba(255, 0, 0, 0.7); }
     10%, 70% { border: 4px solid rgba(139, 0, 0, 0.8); }
