@@ -7,12 +7,12 @@
 
 .info-container {
     position: fixed;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Уменьшаем размер текста */
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Выравниваем текст по левому краю */
+    align-items: center; /* Выравниваем текст по центру */
     justify-content: flex-start; /* Располагаем текст сверху */
-    text-align: left;
+    text-align: center; /* Центрируем текст */
     color: black;
     font-weight: 500;
     top: 0;
@@ -20,22 +20,22 @@
     width: 28vw;
     height: 100%;
     background: linear-gradient(45deg, 
-        rgba(255, 255, 255, 0.3),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.4),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.5),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.6),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.7),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.8),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.9),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.6),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.5),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.4),  /* Полупрозрачный белый */
-        rgba(255, 255, 255, 0.3)   /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.3)
     );
-    background-size: 400%; /* Увеличиваем размер фона для анимации */
-    animation: gradientAnimation 10s ease infinite; /* Анимация градиента */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Тень справа */
-    transition: right 0.5s ease; /* Плавный переход */
+    background-size: 400%;
+    animation: gradientAnimation 10s ease infinite;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.5s ease;
     z-index: 10;
     padding: 20px;
 }
@@ -45,11 +45,13 @@
 }
 
 .info-content {
-    margin-top: 20px; /* Отступ сверху для текста */
-    margin-left: 20%; /* Сдвигаем текст вправо */
-    color: rgba(34, 34, 34, 0.8); /* Цвет текста */
-    word-wrap: break-word; /* Перенос длинных слов */
-    max-width: 90%; /* Ограничиваем ширину текста */
+    margin-top: 10%; /* Выравнивание сверху */
+    padding: 0 10%; /* Добавляем отступы для текста */
+    color: rgba(34, 34, 34, 0.8);
+    word-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.6; /* Увеличиваем межстрочное расстояние */
+    font-size: 1rem; /* Еще больше уменьшаем размер текста для лучшей читаемости */
 }
 
 @keyframes gradientAnimation {
