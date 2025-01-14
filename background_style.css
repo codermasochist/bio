@@ -18,8 +18,13 @@ body, html {
     transition: filter 0.3s ease-in-out; /* Плавный переход */
 }
 
+/* Когда видео начнется играть, убираем размытие */
+.video-background[poster] {
+    filter: blur(5px); /* Размытие постера */
+}
+
 .video-background:not([poster]) {
-    filter: none; /* Убираем размытие, когда видео загружается */
+    filter: none; /* Убираем размытие, когда видео загружено */
 }
 
 /* Настройки для ПК (ширина экрана более 768px) */
