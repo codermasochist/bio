@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>As-bio</title>
+    <title>As bio</title>
     <link rel="stylesheet" href="background_style.css">
     <link rel="stylesheet" href="info_style.css">
     <link rel="stylesheet" href="menu_style.css">
@@ -11,21 +11,64 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
         body {
-            background: url('https://envs.sh/skj.mp4') no-repeat center center fixed;
-            background-size: cover;
             margin: 0;
             overflow: hidden;
-        } 
-        .video-background {
+        }
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+        }
+        .list {
+            position: relative;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .list a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .icon {
+            font-size: 24px;
+        }
+        .indicator {
+            position: absolute;
+            width: 4px;
+            height: 40px;
+            background-color: #fff;
+            top: 50%;
+            left: -6px;
+            transform: translateY(-50%);
+            border-radius: 10px;
+            transition: top 0.3s;
+        }
+        .info-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 10px;
             display: none;
+        }
+        .info-container.show {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <video autoplay muted loop id="backgroundVideo" class="video-background" poster="https://envs.sh/vzO.jpg">
+    <video autoplay muted loop id="backgroundVideo" poster="https://envs.sh/1wG_poster.jpg">
         <source src="https://envs.sh/skj.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
     </video>
-    <h1>Asinfo</h1>
+
     <div class="navigation">
         <ul>
             <li class="list active">
@@ -58,8 +101,8 @@
                     <span class="icon"><ion-icon name="volume-high"></ion-icon></span>
                 </a>
             </li>
-            <div class="indicator"></div>
         </ul>
+        <div class="indicator"></div>
     </div>
 
     <div class="info-container">
@@ -68,14 +111,6 @@
 
     <script>
         const video = document.getElementById('backgroundVideo');
-        const body = document.body;
-
-        // Отображаем видео только после загрузки
-        video.addEventListener('canplaythrough', () => {
-            video.style.display = 'block';
-            body.style.background = 'none'; // Убираем статичный фон
-        });
-
         const list = document.querySelectorAll('.list');
         const indicator = document.querySelector('.indicator');
         const infoContent = document.getElementById('infoContent');
@@ -104,63 +139,51 @@
             let content = '';
             switch (iconName) {
                 case 'home':
-                    content = '<h2>Welcome to Home!</h2>';
                     infoContainer.classList.remove('show');
-                    break;
+                    return;
                 case 'game-controller':
-                    content = `<h2>Games:</h2>
-                               <ul>
-                                   <li>Genshin Impact</li>;
+                    content = `<h2>Games:</h2><ul><li>Genshin Impact</li></ul>`;
                     break;
                 case 'person-circle':
-                    content = `<h2>Bio</h2>
-                               <p>Name: Àssa</p>
-                               <p>Gender: Male</p>
-                               <p>Birthdate: 30 June.</p>
-                               <p>Age: 16 y.o</p>
-                               <h3>Hobbies:</h3>
-                               <ul>
-                                   <li>Watching anime</li>
-                                   <li>Volleyball</li>
-                                   <li>coding...</li>
-                               </ul>
-                               <h3>Favorite anime:</h3>
-                               <ul>
-                                   <li>Darling in the Franxx</li>
-                                   <li>Evangelion</li>
-                                   <li>High School DxD</li>
-                                   <li>Jujutsu Kaisen</li>
-                                   <li>Chainsaw Man</li>
-                               </ul>
-                               <p>(The list will be updated...)</p>`;
+                    content = `
+                        <h2>Bio</h2>
+                        <p>Name: Àssa</p>
+                        <p>Gender: Male</p>
+                        <p>Birthdate: 30 June</p>
+                        <p>Age: 16 y.o</p>
+                        <h3>Hobbies:</h3>
+                        <ul>
+                            <li>Watching anime</li>
+                            <li>Volleyball</li>
+                            <li>Coding...</li>
+                        </ul>
+                        <h3>Favorite anime:</h3>
+                        <ul>
+                            <li>Darling in the Franxx</li>
+                            <li>Evangelion</li>
+                            <li>High School DxD</li>
+                            <li>Jujutsu Kaisen</li>
+                            <li>Chainsaw Man</li>
+                        </ul>`;
                     break;
                 case 'share-social':
-                    content = `<h2>Links to My Social Networks:</h2>
-                               <ul>
-                                   <li>My Telegram: <a href="http://codermasochist.t.me/">click.</a></li>
-                                   <li>My TikTok: <a href="https://www.tiktok.com/@codermasochist?_t=8r5CIcyrqMo&_r=1">click.</a></li>
-                                   <li>My Instagram: <a href="https://www.instagram.com/codermasochist">click.</a></li>
-                                   <li>My discord: <a href="https://discord.gg/6NbuC4Rx">click.</a></li>
-                                   <li>My Telegram channel: <a href="http://t.me/makimalove">click.</a></li>
-                                   <li>Сигны Ассы: <a href="http://t.me/omnisex">click.</a></li>
-                               </ul> The list will be updated.`;
+                    content = `
+                        <h2>Links to My Social Networks:</h2>
+                        <ul>
+                            <li><a href="http://codermasochist.t.me/">Telegram</a></li>
+                            <li><a href="https://www.tiktok.com/@codermasochist?_t=8r5CIcyrqMo&_r=1">TikTok</a></li>
+                            <li><a href="https://www.instagram.com/codermasochist">Instagram</a></li>
+                        </ul>`;
                     break;
                 case 'briefcase':
-                    content = `<h2>Communication with me:</h2>
-                               <p>Online: 7:00 - 22:00 (MSK, GMT+3)</p>
-                               <p>You can't write to me because you have spamblock? <a href="http://t.me/Assarobot?start=start">click here</a></p>
-                               <p>Userbot of: Hikka.<br>What is a Hikka userbot? <a href="https://telegra.ph/hikka-08-22">clickable.</a></p>
-                               <p>‼️ Read before you write to me: <a href="https://nometa.xyz">nometa.xyz</a></p>
-                               <p>If you did not receive a response within 24h, you were ignore.</p>`;
+                    content = `
+                        <h2>Communication with me:</h2>
+                        <p>Online: 7:00 - 22:00 (MSK, GMT+3)</p>
+                        <p>Need to contact me? <a href="http://t.me/Assarobot?start=start">Click here</a></p>`;
                     break;
             }
-            if (iconName !== 'home') {
-    infoContent.innerHTML = content;
-    infoContainer.classList.add('show');
-} else {
-    infoContainer.classList.remove('show');
-            }
-            }
+            infoContent.innerHTML = content;
+            infoContainer.classList.add('show');
         }
 
         function toggleMute() {
@@ -173,7 +196,6 @@
 
         muteToggle.addEventListener('click', (event) => {
             event.preventDefault();
-            event.stopPropagation();
             toggleMute();
         });
     </script>
