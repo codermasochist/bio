@@ -8,8 +8,10 @@
 }
 
 :root {
-    --clr: #ff0000; /* Красный для иконок */
+    --clr: #ff0000; /* Ярко красный для иконок */
     --dark-clr: #ffffff; /* Белый для текста меню */
+    --bg-clr: #8a2be2; /* Фиолетовый для фона панели */
+    --indicator-clr: rgba(0, 255, 0, 0.7); /* Ярко зеленый, но с прозрачностью для индикатора */
 }
 
 body.navigation {
@@ -23,7 +25,7 @@ body.navigation {
 .navigation {
     width: 100px;
     height: auto;
-    background: rgba(255, 255, 255, 0.3); /* Прозрачный белый фон */
+    background: var(--bg-clr); /* Фиолетовый для фона панели */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -67,13 +69,13 @@ body.navigation {
     line-height: 75px;
     font-size: 1.5em;
     text-align: center;
-    color: var(--clr); /* Красный для иконок */
+    color: var(--clr); /* Ярко красный для иконок */
     z-index: 2;
 }
 
 .navigation ul li a .text {
     position: absolute;
-    color: var(--clr); /* Красный для текста меню */
+    color: var(--clr); /* Ярко красный для текста меню */
     font-weight: 400;
     font-size: 0.62em;
     letter-spacing: 0.05em;
@@ -93,7 +95,7 @@ body.navigation {
     left: 50%;
     width: 60px;
     height: 60px;
-    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный черный */
+    background: var(--indicator-clr); /* Ярко зеленый, но полупрозрачный */
     border-radius: 50%;
     border: 6px solid #000000; /* Черный цвет индикатора */
     transition: 0.5s;
@@ -125,7 +127,7 @@ body.navigation {
 }
 
 @keyframes backgroundAnimation {
-    0% { background: rgba(255, 255, 255, 0.3); } /* Прозрачный белый */
-    50% { background: rgba(255, 255, 255, 0.6); } /* Менее прозрачный белый */
-    100% { background: rgba(255, 255, 255, 0.3); } /* Прозрачный белый */
+    0% { background: var(--bg-clr); } /* Фиолетовый для фона */
+    50% { background: rgba(138, 43, 226, 0.6); } /* Менее прозрачный фиолетовый */
+    100% { background: var(--bg-clr); } /* Фиолетовый для фона */
 }
