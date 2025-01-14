@@ -10,52 +10,36 @@
 .info-container {
     position: fixed;
     top: 0;
-    right: -300px;
+    right: -300px; /* Начальное положение вне экрана */
     width: 300px;
     height: 100%;
     background: linear-gradient(45deg, 
-        rgba(255, 255, 255, 0.3), 
-        rgba(255, 255, 255, 0.4), 
-        rgba(255, 255, 255, 0.5), 
-        rgba(255, 255, 255, 0.6), 
-        rgba(255, 255, 255, 0.7), 
-        rgba(255, 255, 255, 0.8), 
-        rgba(255, 255, 255, 0.9), 
-        rgba(255, 255, 255, 0.6), 
-        rgba(255, 255, 255, 0.5), 
-        rgba(255, 255, 255, 0.4), 
-        rgba(255, 255, 255, 0.3)
+        rgba(255, 255, 255, 0.3),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.4),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.5),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.6),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.7),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.8),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.9),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.6),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.5),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.4),  /* Полупрозрачный белый */
+        rgba(255, 255, 255, 0.3)   /* Полупрозрачный белый */
     );
-    background-size: 400%;
-    animation: gradientAnimation 10s ease infinite;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-    transition: right 0.5s ease;
+    background-size: 400%; /* Увеличиваем размер фона для анимации */
+    animation: gradientAnimation 10s ease infinite; /* Анимация градиента */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Тень справа */
+    transition: right 0.5s ease; /* Плавный переход */
     z-index: 10;
 }
 
 .info-container.show {
-    right: 0;
+    right: 0; /* Показать контейнер */
 }
 
 .info-content {
     padding: 20px;
-    color: rgba(34, 34, 34, 0.7);
-}
-
-.navigation .list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    flex-direction: column;
-}
-
-.navigation .list .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+    color: rgba(34, 34, 34, 0.7); /* Темно-серый цвет текста с прозрачностью */
 }
 
 @keyframes gradientAnimation {
@@ -63,3 +47,6 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+вот css файл бокового меню, info_style
+сюда можешь добавить этот код?
