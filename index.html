@@ -7,13 +7,56 @@
     <link rel="stylesheet" href="background_style.css">
     <link rel="stylesheet" href="info_style.css">
     <link rel="stylesheet" href="menu_style.css">
-    <link rel="stylesheet" href="loading_style.css"> <!-- Подключаем файл с анимацией загрузки -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        /* Анимация загрузки */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .loading-screen .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-top: 8px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Видео на весь экран */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
-    <!-- Экран загрузки -->
-    <div id="loadingScreen" class="loading-screen">
+    <!-- Анимация загрузки -->
+    <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
     </div>
 
@@ -66,15 +109,12 @@
     <script>
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
+        const loadingScreen = document.getElementById('loadingScreen');
 
-        // Убираем размытие и отображаем видео после его загрузки
+        // Убираем анимацию загрузки после загрузки видео
         video.addEventListener('canplaythrough', () => {
-            video.style.display = 'block'; // Показываем видео
-            body.style.background = 'none'; // Убираем фон для body
-
-            // Убираем экран загрузки после загрузки видео
-            const loadingScreen = document.getElementById('loadingScreen');
             loadingScreen.style.display = 'none';
+            video.style.display = 'block';
         });
 
         const list = document.querySelectorAll('.list');
@@ -152,8 +192,11 @@
         list.forEach((item) => item.addEventListener('click', activeLink));
         window.addEventListener('load', setIndicator);
 
-        muteToggle.addEventListener('click', toggleMute);
-
+        muteToggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            toggleMute();
+        });
     </script>
 </body>
 </html>
