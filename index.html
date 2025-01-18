@@ -9,12 +9,70 @@
     <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        /* Стиль для экрана загрузки */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Делаем экран загрузки поверх всего контента */
+        }
+
+        /* Стиль для анимации загрузки */
+        .loader {
+            border: 8px solid #f3f3f3; /* Светлый цвет */
+            border-top: 8px solid #3498db; /* Синий цвет для анимации */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        /* Анимация вращения */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Стиль для видео фона */
+        #backgroundVideo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(10px);
+            display: none;
+        }
+
+        /* Обычные стили для контейнеров */
+        .info-container {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+    <!-- Экран загрузки -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
     <video id="backgroundVideo" class="video-background" preload="auto" autoplay muted loop>
         <source src="https://envs.sh/Nxr.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
+
     <h1>info</h1>
     <div class="navigation">
         <ul>
@@ -65,6 +123,10 @@
             video.style.filter = 'none';  // Убираем размытие после загрузки видео
             video.style.display = 'block';
             body.style.background = 'none';
+
+            // Убираем экран загрузки после загрузки видео
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.style.display = 'none';
         });
 
         const list = document.querySelectorAll('.list');
