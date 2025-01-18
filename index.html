@@ -42,14 +42,15 @@
 
         /* Стиль для видео фона */
         #backgroundVideo {
-            position: absolute;
+            position: fixed; /* Фиксированное положение */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Видео будет покрывать весь экран, не искажая пропорции */
             filter: blur(10px);
-            display: none;
+            z-index: -1; /* Отправляем видео на задний план, чтобы оно не мешало контенту */
+            display: none; /* Скрываем видео, пока оно не загрузится */
         }
 
         /* Обычные стили для контейнеров */
@@ -196,7 +197,7 @@
             }
         }
 
-        function toggleMute() {
+              function toggleMute() {
             video.muted = !video.muted;
             volumeIcon.name = video.muted ? 'volume-mute' : 'volume-high';
         }
