@@ -42,15 +42,13 @@
 
         /* Стиль для видео фона */
         #backgroundVideo {
-            position: fixed; /* Фиксированное положение */
+            position: fixed; /* Сделаем его фиксированным */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Видео будет покрывать весь экран, не искажая пропорции */
-            filter: blur(10px);
-            z-index: -1; /* Отправляем видео на задний план, чтобы оно не мешало контенту */
-            display: none; /* Скрываем видео, пока оно не загрузится */
+            object-fit: cover; /* Обеспечивает правильное покрытие фоном всего экрана */
+            z-index: -1; /* Делаем так, чтобы видео было на заднем плане */
         }
 
         /* Обычные стили для контейнеров */
@@ -121,9 +119,8 @@
 
         // Убираем размытие и отображаем видео после его загрузки
         video.addEventListener('canplaythrough', () => {
-            video.style.filter = 'none';  // Убираем размытие после загрузки видео
-            video.style.display = 'block';
-            body.style.background = 'none';
+            video.style.display = 'block'; // Показываем видео
+            body.style.background = 'none'; // Убираем фон для body
 
             // Убираем экран загрузки после загрузки видео
             const loadingScreen = document.getElementById('loadingScreen');
@@ -196,7 +193,8 @@
                 infoContainer.classList.add('show');
             }
         }
-              function toggleMute() {
+
+        function toggleMute() {
             video.muted = !video.muted;
             volumeIcon.name = video.muted ? 'volume-mute' : 'volume-high';
         }
