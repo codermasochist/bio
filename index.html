@@ -9,12 +9,61 @@
     <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        /* Видео */
+        .video-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none; /* Скрываем до загрузки */
+        }
+
+        /* Контейнер для загрузки */
+        .loader-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* Анимация загрузки */
+        .loader {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Анимация вращения */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 <body>
-    <video id="backgroundVideo" class="video-background" poster="https://envs.sh/vzO.jpg" preload="auto" autoplay muted loop>
+    <div class="loader-container" id="loaderContainer">
+        <div class="loader"></div>
+    </div>
+
+    <video id="backgroundVideo" class="video-background" preload="auto" autoplay muted loop>
         <source src="https://envs.sh/Nxr.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
+
     <h1>info</h1>
     <div class="navigation">
         <ul>
@@ -58,12 +107,14 @@
 
     <script>
         const video = document.getElementById('backgroundVideo');
+        const loaderContainer = document.getElementById('loaderContainer');
         const body = document.body;
 
         // Убираем размытие и отображаем видео после его загрузки
         video.addEventListener('canplaythrough', () => {
-            video.style.filter = 'none';  // Убираем размытие после загрузки видео
+            video.style.filter = 'none'; // Убираем размытие после загрузки видео
             video.style.display = 'block';
+            loaderContainer.style.display = 'none'; // Скрываем загрузчик
             body.style.background = 'none';
         });
 
@@ -78,7 +129,7 @@
             const activeItem = document.querySelector('.list.active');
             const itemRect = activeItem.getBoundingClientRect();
             const navRect = document.querySelector('.navigation').getBoundingClientRect();
-            const centerY = itemRect.top - navRect.top + (itemRect.height / 2);
+            const centerY = itemRect.top - navRect.top + itemRect.height / 2;
             indicator.style.top = `${centerY}px`;
         }
 
@@ -148,6 +199,5 @@
             toggleMute();
         });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
