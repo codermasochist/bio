@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="background_style.css">
     <link rel="stylesheet" href="info_style.css">
     <link rel="stylesheet" href="menu_style.css">
+    <link rel="stylesheet" href="loader.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
+    <!-- Загрузочный экран -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
     <video id="backgroundVideo" class="video-background" preload="auto" autoplay muted loop>
         <source src="https://envs.sh/Nxr.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
@@ -56,13 +62,13 @@
         <div class="info-content" id="infoContent"></div>
     </div>
 
+    <script src="loader.js"></script>
     <script>
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
 
-        // Убираем размытие и отображаем видео после его загрузки
         video.addEventListener('canplaythrough', () => {
-            video.style.filter = 'none';  // Убираем размытие после загрузки видео
+            video.style.filter = 'none';
             video.style.display = 'block';
             body.style.background = 'none';
         });
@@ -70,7 +76,6 @@
         const list = document.querySelectorAll('.list');
         const indicator = document.querySelector('.indicator');
         const infoContent = document.getElementById('infoContent');
-        const infoContainer = document.querySelector('.info-container');
         const muteToggle = document.getElementById('muteToggle');
         const volumeIcon = muteToggle.querySelector('ion-icon');
 
@@ -96,7 +101,6 @@
             switch (iconName) {
                 case 'home':
                     content = '<h2>Welcome to Home!</h2>';
-                    infoContainer.classList.remove('show');
                     break;
                 case 'game-controller':
                     content = `<h2>Games:</h2>
@@ -110,7 +114,7 @@
                               <p>Nickname: Assa.</p>
                               <p>Gender: Male. he/him</p>
                               <p>Birthdate: 30.06.2008 (16 y. o.)</p>
-                              <p>Hobbies: anime, coding...</p>`;
+                              <p>Hobbies: anime, <span style="color: red;">coding...</span></p>`;
                     break;
                 case 'share-social':
                     content = `<h2>My social links:</h2>
@@ -128,10 +132,7 @@
                                <p>Before writing to me, please read/visit — <a href="https://nometa.xyz">nometa.xyz</a></p>`;
                     break;
             }
-            if (iconName !== 'home') {
-                infoContent.innerHTML = content;
-                infoContainer.classList.add('show');
-            }
+            infoContent.innerHTML = content;
         }
 
         function toggleMute() {
