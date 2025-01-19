@@ -12,55 +12,50 @@ body, html {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1;
+    z-index: 1; /* Фон видео */
     transform: translate(-50%, -50%);
-    filter: blur(5px); /* Размытие для poster */
-    transition: filter 0.3s ease-in-out; /* Плавный переход */
+    opacity: 0; /* Скрыто по умолчанию */
+    animation: showVideo 2s ease-in forwards; /* Плавное появление видео */
 }
 
-/* Когда видео загружено и начинает воспроизводиться, убираем размытие */
-.video-background.loaded {
-    filter: none;
+/* Индикатор загрузки */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Анимация загрузки поверх видео */
 }
 
-/* Настройки для ПК (ширина экрана более 768px) */
-@media screen and (min-width: 768px) {
-    .video-background {
-        width: 177.78vh; /* Высота экрана * 16/9 для 16:9 */
-        height: 100vw; /* 100% ширины экрана */
-        transform: translate(-50%, -50%) rotate(-90deg);
-    }
-}
-
-h1 {
-    position: relative;
-    z-index: 1;
-    color: rgba(255, 0, 0, 0.7);
-    text-align: center;
-    margin-top: 5%;
-    margin-left: 40%;
-    border-radius: 30px;
-    border: 10px solid rgba(255, 0, 0, 0.7);
-    animation: borderAnimation 5s infinite, textColorAnimation 5s infinite;
-    display: inline-block;
-    padding: 10px 20px;
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top-color: rgba(255, 0, 0, 0.8);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
 /* Анимации */
-@keyframes borderAnimation {
-    0%, 100% { border: 4px solid rgba(255, 0, 0, 0.7); }
-    10%, 70% { border: 4px solid rgba(139, 0, 0, 0.8); }
-    20%, 60% { border: 4px solid rgba(255, 99, 71, 0.6); }
-    30%, 50% { border: 4px solid rgba(255, 69, 0, 0.5); }
-    40% { border: 4px solid rgba(0, 0, 0, 0.4); }
-    80%, 90% { border: 4px solid rgba(255, 69, 0, 0.5); }
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-@keyframes textColorAnimation {
-    0%, 100% { color: rgba(255, 0, 0, 0.7); }
-    10%, 70% { color: rgba(139, 0, 0, 0.8); }
-    20%, 60% { color: rgba(255, 99, 71, 0.6); }
-    30%, 50% { color: rgba(255, 69, 0, 0.5); }
-    40% { color: rgba(0, 0, 0, 0.4); }
-    80%, 90% { color: rgba(255, 69, 0, 0.5); }
+@keyframes showVideo {
+    0% {
+        opacity: 0;
     }
+    100% {
+        opacity: 1;
+    }
+}
