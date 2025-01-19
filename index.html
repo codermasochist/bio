@@ -9,42 +9,8 @@
     <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <style>
-        /* Экран загрузки */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-
-        #loading-animation {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #3498db;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
 </head>
 <body>
-    <!-- Экран загрузки -->
-    <div id="loading-screen">
-        <div id="loading-animation"></div>
-    </div>
-
     <video id="backgroundVideo" class="video-background" preload="auto" autoplay muted loop>
         <source src="https://envs.sh/Nxr.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
@@ -93,12 +59,10 @@
     <script>
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
-        const loadingScreen = document.getElementById('loading-screen');
 
-        // Убираем экран загрузки после загрузки видео
+        // Убираем размытие и отображаем видео после его загрузки
         video.addEventListener('canplaythrough', () => {
-            loadingScreen.style.display = 'none'; // Скрываем экран загрузки
-            video.style.filter = 'none';  // Убираем размытие
+            video.style.filter = 'none';  // Убираем размытие после загрузки видео
             video.style.display = 'block';
             body.style.background = 'none';
         });
@@ -146,7 +110,7 @@
                               <p>Nickname: Assa.</p>
                               <p>Gender: Male. he/him</p>
                               <p>Birthdate: 30.06.2008 (16 y. o.)</p>
-                              <p>Hobbies: anime, coding...</p>`;
+                              <p>Hobbies: anime, <span style="color: red;">coding...</span></p>`;
                     break;
                 case 'share-social':
                     content = `<h2>My social links:</h2>
