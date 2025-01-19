@@ -9,66 +9,8 @@
     <link rel="stylesheet" href="menu_style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <style>
-        /* Анимация загрузки */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .ball {
-            background-color: rgba(0, 0, 0, 0);
-            border: 5px solid rgba(0, 183, 229, 0.9);
-            opacity: .9;
-            border-top: 5px solid rgba(0, 0, 0, 0);
-            border-left: 5px solid rgba(0, 0, 0, 0);
-            border-radius: 50px;
-            box-shadow: 0 0 35px #2187e7;
-            width: 50px;
-            height: 50px;
-            margin: 0 auto;
-            animation: spin .5s infinite linear;
-        }
-        .ball1 {
-            background-color: rgba(0, 0, 0, 0);
-            border: 5px solid rgba(0, 183, 229, 0.9);
-            opacity: .9;
-            border-top: 5px solid rgba(0, 0, 0, 0);
-            border-left: 5px solid rgba(0, 0, 0, 0);
-            border-radius: 50px;
-            box-shadow: 0 0 15px #2187e7;
-            width: 30px;
-            height: 30px;
-            margin: 0 auto;
-            position: relative;
-            top: -50px;
-            animation: spinoff .5s infinite linear;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes spinoff {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(-360deg); }
-        }
-    </style>
 </head>
 <body>
-    <!-- Экран загрузки -->
-    <div id="loadingScreen">
-        <div class="ball"></div>
-        <div class="ball1"></div>
-    </div>
-
-    <!-- Основной контент -->
     <video id="backgroundVideo" class="video-background" preload="auto" autoplay muted loop>
         <source src="https://envs.sh/Nxr.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
@@ -116,13 +58,11 @@
 
     <script>
         const video = document.getElementById('backgroundVideo');
-        const loadingScreen = document.getElementById('loadingScreen');
         const body = document.body;
 
-        // Показываем основной контент после загрузки страницы
-        window.addEventListener('load', () => {
-            loadingScreen.style.display = 'none';
-            video.style.filter = 'none';
+        // Убираем размытие и отображаем видео после его загрузки
+        video.addEventListener('canplaythrough', () => {
+            video.style.filter = 'none';  // Убираем размытие после загрузки видео
             video.style.display = 'block';
             body.style.background = 'none';
         });
@@ -202,10 +142,11 @@
         list.forEach((item) => item.addEventListener('click', activeLink));
         window.addEventListener('load', setIndicator);
 
-        muteToggle.addEventListener('click', toggleMute);
-
-        // Обновление положения индикатора при изменении размеров окна
-        window.addEventListener('resize', setIndicator);
+        muteToggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            toggleMute();
+        });
     </script>
 </body>
 </html>
