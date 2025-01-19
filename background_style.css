@@ -12,10 +12,11 @@ body, html {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: 1; /* Фон видео */
+    z-index: -1;
     transform: translate(-50%, -50%);
-    opacity: 0; /* Скрыто по умолчанию */
-    animation: showVideo 2s ease-in forwards; /* Плавное появление видео */
+    transition: none;
+    opacity: 0;
+    animation: showVideo 5s ease-in forwards; /* Плавное появление видео */
 }
 
 /* Индикатор загрузки */
@@ -29,7 +30,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2; /* Анимация загрузки поверх видео */
+    z-index: 9999;
+    animation: hideLoader 3s ease-in forwards; /* Скрыть через 3 секунды */
 }
 
 .loader {
@@ -51,11 +53,30 @@ body, html {
     }
 }
 
+@keyframes hideLoader {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 @keyframes showVideo {
     0% {
         opacity: 0;
     }
     100% {
         opacity: 1;
+    }
+}
+
+/* Показ фона на ПК */
+@media screen and (min-width: 768px) {
+    .video-background {
+        width: 177.78vh;
+        height: 100vw;
+        transform: translate(-50%, -50%) rotate(-90deg);
     }
 }
