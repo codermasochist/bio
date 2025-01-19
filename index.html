@@ -11,17 +11,10 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <!-- Индикатор загрузки -->
-    <div class="loading-screen">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Видео фон -->
-    <video id="backgroundVideo" class="video-background" preload="auto" autoplay muted loop style="display: none;">
+    <video id="backgroundVideo" class="video-background" preload="auto" autoplay muted loop>
         <source src="https://envs.sh/Nxr.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
-
     <h1>info</h1>
     <div class="navigation">
         <ul>
@@ -66,13 +59,11 @@
     <script>
         const video = document.getElementById('backgroundVideo');
         const body = document.body;
-        const loadingScreen = document.querySelector('.loading-screen');
 
         // Убираем размытие и отображаем видео после его загрузки
         video.addEventListener('canplaythrough', () => {
-            video.style.display = 'block';  // Показываем видео
-            loadingScreen.style.display = 'none';  // Прячем индикатор загрузки
-            video.style.filter = 'none';  // Убираем размытие
+            video.style.filter = 'none';  // Убираем размытие после загрузки видео
+            video.style.display = 'block';
             body.style.background = 'none';
         });
 
