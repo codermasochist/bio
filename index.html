@@ -202,4 +202,10 @@
         list.forEach((item) => item.addEventListener('click', activeLink));
         window.addEventListener('load', setIndicator);
 
-        muteToggle.addEventListener('click',
+        muteToggle.addEventListener('click', toggleMute);
+
+        // Обновление положения индикатора при изменении размеров окна
+        window.addEventListener('resize', setIndicator);
+    </script>
+</body>
+</html>
